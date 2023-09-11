@@ -8,6 +8,9 @@ import com.bloom.pium.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -67,4 +70,30 @@ public class BoardServiceImpl  implements BoardService {
     public void deletBoard(Long boardId) throws Exception {
 
     }
+
+    // ↓↓ 추가 (2023.09.11.월)
+    // 게시글 전체 불러오기
+    @Override
+    public Page<BoardResponseDto> getAllBoards(int page, int size) {
+        // 페이지와 페이지 크기를 기반으로 페이징 요청
+        Pageable pageable = PageRequest.of(page-1, size); // 1페이지부터 시작
+
+        // 게시물을 페이징하여 가져옴
+        Page<Board> boardPage = boardRepository.findAll(pageable);
+
+        // Board엔티티를 BoardResponseDto로 변환하여 반환
+        return boardPage.map(this::convertToDto);
+    }
+
+    // Board 엔티티를 BoardResponseDto로 변환하는 메서드
+    private BoardResponseDto convertToDto(Board board) {
+        BoardResponseDto boardResponseDto = new BoardResponseDto();
+        boardResponseDto.setBoardId(board.getBoardId());
+        boardResponseDto.setTitle(board.getTitle());
+        boardResponseDto.setContent(board.getContent());
+        boardResponseDto.setViewCnt(board.getViewCnt());
+        boardResponseDto.setLikeCnt(board.getLikeCnt());
+        return boardResponseDto;
+    }
+    // ↑↑ 추가 (2023.09.11.월)
 }

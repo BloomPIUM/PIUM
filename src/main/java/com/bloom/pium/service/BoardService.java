@@ -3,6 +3,7 @@ package com.bloom.pium.service;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
+import org.springframework.data.domain.Page;
 
 public interface BoardService {
     // 게시글 조회
@@ -14,7 +15,12 @@ public interface BoardService {
     // 게시글 수정
     BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception;
 
-    //게시글 삭제
+    // 게시글 삭제
     void deletBoard(Long boardId) throws Exception;
 
+
+    // ↓↓ 추가 (2023.09.11.월)
+    // 전체 게시글 가져오기 (페이징)
+    Page<BoardResponseDto> getAllBoards(int page, int size);
+    // ↑↑ 추가 (2023.09.11.월)
 }

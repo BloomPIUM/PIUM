@@ -64,7 +64,7 @@ public class BoardServiceImpl  implements BoardService {
     }
 
     @Override
-    public void deletBoard(Long boardId) throws Exception {
+    public void deleteBoard(Long boardId) throws Exception {
 
     }
 }

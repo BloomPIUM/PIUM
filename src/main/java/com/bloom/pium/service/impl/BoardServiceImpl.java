@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class BoardServiceImpl  implements BoardService {
@@ -64,7 +65,19 @@ public class BoardServiceImpl  implements BoardService {
     }
 
     @Override
-    public void deleteBoard(Long boardId) throws Exception {
+    //public void deleteBoard(Long boardId) throws Exception
+    public void deleteBoard(Long number) throws Exception{
+        Optional<Board> selectedBoard = boardRepository.findById(number);
+
+        if(selectedBoard.isPresent()){
+            Board board = selectedBoard.get();
+
+            boardRepository.delete(board);
+
+        } else{
+            throw new Exception();
+        }
+    }
 
     }
-}
+

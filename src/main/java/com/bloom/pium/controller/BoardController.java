@@ -30,8 +30,8 @@ public class BoardController {
         BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
-    @DeleteMapping
-    public ResponseEntity<String>deleteBoard (Long boardId) throws Exception{
+    @DeleteMapping()
+   public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
         boardService.deleteBoard(boardId);
 
         return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다");

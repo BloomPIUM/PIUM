@@ -2641,3 +2641,235 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 [2023-09-11 17:04:14.138] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
 [2023-09-11 17:04:14.140] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
 [2023-09-11 17:04:14.145] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 17:37:01.513] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 17:37:01.525] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 15648 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 17:37:01.526] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 17:37:02.335] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 17:37:02.380] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+[2023-09-11 17:37:02.822] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 17:37:02.828] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 17:37:02.829] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 17:37:02.829] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 17:37:02.918] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 17:37:02.918] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 1340 ms
+[2023-09-11 17:37:03.019] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 17:37:03.071] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 17:37:03.194] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 17:37:03.278] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 17:37:03.494] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 17:37:03.531] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 17:37:04.071] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 17:37:04.079] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 17:37:04.453] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 17:37:04.777] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 17:37:04.791] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 17:37:04.925] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 3.883 seconds (JVM running for 4.491)
+[2023-09-11 17:37:07.186] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 17:37:07.186] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 17:37:07.187] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+[2023-09-11 17:39:09.837] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 17:39:09.839] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 17:39:09.844] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 17:53:41.924] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 17:53:41.934] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 19776 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 17:53:41.934] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 17:53:42.694] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 17:53:42.733] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+[2023-09-11 17:53:43.156] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 17:53:43.162] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 17:53:43.163] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 17:53:43.164] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 17:53:43.244] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 17:53:43.244] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 1242 ms
+[2023-09-11 17:53:43.351] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 17:53:43.390] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 17:53:43.514] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 17:53:43.590] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 17:53:43.797] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 17:53:43.818] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 17:53:44.341] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 17:53:44.348] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 17:53:44.718] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 17:53:45.026] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 17:53:45.041] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 17:53:45.176] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 3.726 seconds (JVM running for 4.214)
+[2023-09-11 17:53:50.344] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 17:53:50.345] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 17:53:50.345] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 0 ms
+[2023-09-11 17:54:42.804] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 17:54:42.806] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 17:54:42.811] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:13:44.851] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:13:44.875] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 9740 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:13:44.878] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:13:46.656] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:13:46.720] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:13:47.534] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:13:47.545] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:13:47.547] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:13:47.547] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:13:47.701] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:13:47.701] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2714 ms
+[2023-09-11 21:13:47.934] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:13:48.018] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:13:48.294] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:13:48.483] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:13:49.052] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:13:49.107] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:13:50.045] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:13:50.055] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:13:50.822] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:13:51.412] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:13:51.435] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:13:51.648] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 7.786 seconds (JVM running for 8.96)
+[2023-09-11 21:13:56.459] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 21:13:56.460] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 21:13:56.462] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms
+[2023-09-11 21:14:04.929] [WARN ] [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'boardId' for method parameter type Long is not present]
+[2023-09-11 21:15:29.052] [WARN ] [http-nio-8080-exec-8] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'boardId' for method parameter type Long is not present]
+[2023-09-11 21:16:14.624] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:16:14.627] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:16:14.641] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:16:20.458] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:16:20.483] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 19164 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:16:20.485] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:16:22.039] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:16:22.104] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:16:22.799] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:16:22.807] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:16:22.808] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:16:22.808] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:16:22.957] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:16:22.957] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2392 ms
+[2023-09-11 21:16:23.140] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:16:23.195] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:16:23.401] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:16:23.552] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:16:23.944] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:16:23.993] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:16:24.841] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:16:24.851] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:16:25.382] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:16:25.872] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:16:25.892] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:16:26.098] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 6.449 seconds (JVM running for 7.341)
+[2023-09-11 21:17:41.888] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:17:41.890] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:17:41.901] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:20:16.175] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:20:16.185] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 29552 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:20:16.186] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:20:17.682] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:20:17.760] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 65 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:20:18.388] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:20:18.399] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:20:18.402] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:20:18.402] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:20:18.523] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:20:18.523] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2261 ms
+[2023-09-11 21:20:18.686] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:20:18.740] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:20:18.929] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:20:19.089] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:20:19.495] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:20:19.533] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:20:20.473] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:20:20.493] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:20:21.123] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:20:21.634] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:20:21.654] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:20:21.892] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 6.413 seconds (JVM running for 7.19)
+[2023-09-11 21:20:28.630] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 21:20:28.631] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 21:20:28.632] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+[2023-09-11 21:21:22.340] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:21:22.342] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:21:22.349] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:31:16.913] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:31:16.928] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 5340 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:31:16.930] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:31:18.471] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:31:18.526] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 46 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:31:19.129] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:31:19.139] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:31:19.141] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:31:19.142] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:31:19.252] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:31:19.253] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2241 ms
+[2023-09-11 21:31:19.423] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:31:19.483] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:31:19.668] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:31:19.790] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:31:20.121] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:31:20.151] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:31:20.995] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:31:21.007] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:31:21.731] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:31:22.278] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:31:22.300] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:31:22.553] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 6.351 seconds (JVM running for 7.152)
+[2023-09-11 21:31:26.671] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 21:31:26.672] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 21:31:26.673] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+[2023-09-11 21:31:50.113] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:31:50.116] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:31:50.125] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:33:16.779] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:33:16.794] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 31904 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:33:16.796] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:33:18.394] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:33:18.458] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 54 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:33:19.090] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:33:19.098] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:33:19.100] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:33:19.100] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:33:19.225] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:33:19.225] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2362 ms
+[2023-09-11 21:33:19.401] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:33:19.449] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:33:19.617] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:33:19.732] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:33:20.048] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:33:20.086] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:33:20.921] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:33:20.931] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:33:21.559] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:33:22.056] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:33:22.083] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:33:22.336] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 6.242 seconds (JVM running for 7.181)
+[2023-09-11 21:33:27.548] [INFO ] [http-nio-8080-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 21:33:27.549] [INFO ] [http-nio-8080-exec-3] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 21:33:27.550] [INFO ] [http-nio-8080-exec-3] org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+[2023-09-11 21:33:32.532] [WARN ] [http-nio-8080-exec-6] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'boardId' for method parameter type Long is not present]
+[2023-09-11 21:33:50.712] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:33:50.715] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:33:50.726] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+[2023-09-11 21:33:55.919] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-09-11 21:33:55.925] [INFO ] [main] com.bloom.pium.PiumApplication Starting PiumApplication using Java 17.0.8 on LAPTOP-9KGP8HRJ with PID 15956 (C:\Users\playdata\intellij\pium\pium\build\classes\java\main started by playdata in C:\Users\playdata\intellij\pium\pium)
+[2023-09-11 21:33:55.927] [INFO ] [main] com.bloom.pium.PiumApplication No active profile set, falling back to 1 default profile: "default"
+[2023-09-11 21:33:57.482] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-09-11 21:33:57.563] [INFO ] [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+[2023-09-11 21:33:58.331] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http)
+[2023-09-11 21:33:58.342] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:33:58.344] [INFO ] [main] org.apache.catalina.core.StandardService Starting service [Tomcat]
+[2023-09-11 21:33:58.344] [INFO ] [main] org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.78]
+[2023-09-11 21:33:58.486] [INFO ] [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+[2023-09-11 21:33:58.486] [INFO ] [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2478 ms
+[2023-09-11 21:33:58.680] [INFO ] [main] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-09-11 21:33:58.744] [INFO ] [main] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.15.Final
+[2023-09-11 21:33:59.015] [INFO ] [main] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-09-11 21:33:59.179] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-09-11 21:33:59.581] [INFO ] [main] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-09-11 21:33:59.631] [INFO ] [main] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[2023-09-11 21:34:00.793] [INFO ] [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-09-11 21:34:00.812] [INFO ] [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:34:01.536] [WARN ] [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-09-11 21:34:02.105] [INFO ] [main] org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+[2023-09-11 21:34:02.128] [INFO ] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path ''
+[2023-09-11 21:34:02.334] [INFO ] [main] com.bloom.pium.PiumApplication Started PiumApplication in 7.185 seconds (JVM running for 8.141)
+[2023-09-11 21:34:05.868] [INFO ] [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-09-11 21:34:05.869] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+[2023-09-11 21:34:05.870] [INFO ] [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+[2023-09-11 21:35:16.136] [INFO ] [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-09-11 21:35:16.138] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+[2023-09-11 21:35:16.146] [INFO ] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.

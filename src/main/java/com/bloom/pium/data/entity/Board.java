@@ -40,4 +40,8 @@ public class Board {
     private LocalDateTime createdDate;
 
     private  LocalDateTime modifiedDate;
+
+
 }
+
+

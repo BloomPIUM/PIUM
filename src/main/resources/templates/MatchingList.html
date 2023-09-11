@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Matching ID</th>
+        <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="m : ${matchinglist}">
+            <td>
+                <a th:text="${m.matchingId}"></a>
+                <a th:text="${m.comment}"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

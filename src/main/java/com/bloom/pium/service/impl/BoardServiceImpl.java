@@ -57,10 +57,19 @@ public class BoardServiceImpl  implements BoardService {
 
         return boardResponseDto;
     }
-
     @Override
     public BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception {
-        return null;
+        Board foundBoard = boardRepository.findById(boardId).get();
+        foundBoard.setTitle(title);
+        foundBoard.setContent(content);
+        Board changedBoard = boardRepository.save(foundBoard);
+
+        BoardResponseDto boardResponseDto = new BoardResponseDto();
+        boardResponseDto.setBoardId(changedBoard.getBoardId());
+        boardResponseDto.setTitle(changedBoard.getTitle());
+        boardResponseDto.setContent(changedBoard.getContent());
+
+        return boardResponseDto;
     }
 
     @Override

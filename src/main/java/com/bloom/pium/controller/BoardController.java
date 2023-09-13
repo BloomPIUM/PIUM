@@ -4,6 +4,7 @@ import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,14 @@ public class BoardController {
     public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
         BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
+
+    @GetMapping("/paging")
+    public Page<BoardResponseDto> getAllBoards(
+            @RequestParam(defaultValue = "1") int page  // ,@RequestParam(defaultValue = "10") int size
+          ) {
+        return boardService.getAllBoards(page);
     }
 
 }

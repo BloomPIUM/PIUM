@@ -62,6 +62,7 @@ public class BoardServiceImpl  implements BoardService {
         Board foundBoard = boardRepository.findById(boardId).get();
         foundBoard.setTitle(title);
         foundBoard.setContent(content);
+
         Board changedBoard = boardRepository.save(foundBoard);
 
         BoardResponseDto boardResponseDto = new BoardResponseDto();

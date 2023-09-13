@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class BoardServiceImpl  implements BoardService {
@@ -69,9 +70,19 @@ public class BoardServiceImpl  implements BoardService {
     }
 
     @Override
-    public void deletBoard(Long boardId) throws Exception {
+    public void deleteBoard(Long number) throws Exception{
+        Optional<BoardMatching> selectedBoard = boardRepository.findById(number);
 
+        if(selectedBoard.isPresent()){
+            BoardMatching board = selectedBoard.get();
+
+            boardRepository.delete(board);
+
+        } else{
+            throw new Exception();
+        }
     }
+
 
 
     // 게시글 전체 불러오기
@@ -99,3 +110,4 @@ public class BoardServiceImpl  implements BoardService {
     }
 
 }
+

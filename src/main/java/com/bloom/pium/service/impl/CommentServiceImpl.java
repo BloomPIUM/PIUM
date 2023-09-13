@@ -29,7 +29,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto writeComment(CommentDto commentDto) {
 
         // 게시글이 없으면
-        boardRepository.findById(commentDto.getBoardId()).orElseThrow(RuntimeException::new);
+        //boardRepository.findById(commentDto.getBoardId()).orElseThrow(RuntimeException::new);
 
         // 자식 X
         if(commentDto.getPContentId() == null) {

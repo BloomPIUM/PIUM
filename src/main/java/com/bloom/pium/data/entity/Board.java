@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 @Entity
 @Table(name="board")
-public class Board {
+public class Board extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardId;
@@ -37,7 +37,10 @@ public class Board {
     @Column(nullable = true)
     private int viewCnt;
 
-    private LocalDateTime createdDate;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    @ToString.Exclude
+    private UserInfo userInfo;
 
-    private  LocalDateTime modifiedDate;
+
 }

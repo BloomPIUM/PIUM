@@ -48,17 +48,17 @@ public class UserInfoController {
         if (username != null && checkUserDto.getUsername().equals(username)) {
             // 값이 일치하는 경우
             if(password != null && checkUserDto.getPassword().equals(password)){
-                return "BoardForm";
+                return "redirect:/board/write";
             }else{
                 model.addAttribute("error", "비밀번호를 확인해주세요.");
             }
-        } else {
+        }
+
             // 값이 불일치하는 경우
             model.addAttribute("error", "회원가입을 진행해주세요");
             return "redirect:/SignupPage";
-        }
 
-        return "redirect:/home"; // 로그인 성공 후 이동할 페이지
+
     }
 
 }

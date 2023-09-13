@@ -2,7 +2,7 @@ package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
-import com.bloom.pium.data.entity.Board;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.repository.BoardRepository;
 import com.bloom.pium.service.BoardService;
 import org.slf4j.Logger;
@@ -26,34 +26,34 @@ public class BoardServiceImpl  implements BoardService {
     // 조회
     @Override
     public BoardResponseDto getBoard(Long boardId) {
-        Board board = boardRepository.findById(boardId).get();
+        BoardMatching boardMatching = boardRepository.findById(boardId).get();
         BoardResponseDto boardResponseDto = new BoardResponseDto();
-        boardResponseDto.setTitle(board.getTitle());
-        boardResponseDto.setContent(board.getContent());
-        boardResponseDto.setViewCnt(board.getViewCnt());
-        boardResponseDto.setLikeCnt(board.getLikeCnt());
+        boardResponseDto.setTitle(boardMatching.getTitle());
+        boardResponseDto.setContent(boardMatching.getContent());
+        boardResponseDto.setViewCnt(boardMatching.getViewCnt());
+        boardResponseDto.setLikeCnt(boardMatching.getLikeCnt());
 
         return boardResponseDto;
     }
 
     @Override
     public BoardResponseDto saveBoard(BoardDto boardDto) {
-        Board board = new Board();
-        board.setTitle(boardDto.getTitle());
-        board.setContent(boardDto.getContent());
-        board.setSchedule(boardDto.getSchedule());
-        board.setPlace(boardDto.getPlace());
-        board.setViewCnt(0); // 초기값으로 0 설정
-        board.setLikeCnt(0);
-        board.setCreatedDate(LocalDateTime.now());
-        board.setModifiedDate(LocalDateTime.now());
+        BoardMatching boardMatching = new BoardMatching();
+        boardMatching.setTitle(boardDto.getTitle());
+        boardMatching.setContent(boardDto.getContent());
+        boardMatching.setSchedule(boardDto.getSchedule());
+        boardMatching.setPlace(boardDto.getPlace());
+        boardMatching.setViewCnt(0); // 초기값으로 0 설정
+        boardMatching.setLikeCnt(0);
+        boardMatching.setCreatedDate(LocalDateTime.now());
+        boardMatching.setModifiedDate(LocalDateTime.now());
 
-        Board savedBoard = boardRepository.save(board);
+        BoardMatching savedBoardMatching = boardRepository.save(boardMatching);
 
         BoardResponseDto boardResponseDto = new BoardResponseDto();
-        boardResponseDto.setBoardId(savedBoard.getBoardId());
-        boardResponseDto.setTitle(savedBoard.getTitle());
-        boardResponseDto.setContent(savedBoard.getContent());
+        boardResponseDto.setBoardId(savedBoardMatching.getBoardId());
+        boardResponseDto.setTitle(savedBoardMatching.getTitle());
+        boardResponseDto.setContent(savedBoardMatching.getContent());
 
         return boardResponseDto;
     }

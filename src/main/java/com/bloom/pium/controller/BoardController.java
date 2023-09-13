@@ -25,7 +25,7 @@ public class BoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-    @PostMapping("write")
+    @PostMapping("/write")
     public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
         BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);

@@ -1,17 +1,16 @@
 package com.bloom.pium.data.repository;
 
-import com.bloom.pium.data.entity.Board;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.entity.UserInfo;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-public class BoardRepositoryTest {
+public class BoardMatchingRepositoryTest {
     @Autowired
-    UserInfoRepositoty userInfoRepositoty;
+    UserInfoRepository userInfoRepository;
     @Autowired
     BoardRepository boardRepository;
 
@@ -24,19 +23,19 @@ public class BoardRepositoryTest {
         user.setName("어른이");
         user.setPhone("010-1234-5678");
         user.setGender("여성");
-        userInfoRepositoty.save(user);
+        userInfoRepository.save(user);
 
-        Board board = new Board();
-        board.setTitle("오운완 1일차");
-        board.setContent("유산소+근력");
-        board.setSchedule("토요일");
-        board.setPlace("하나누리");
-        board.setUserInfo(user);
-        boardRepository.save(board);
+        BoardMatching boardMatching = new BoardMatching();
+        boardMatching.setTitle("오운완 1일차");
+        boardMatching.setContent("유산소+근력");
+        boardMatching.setSchedule("토요일");
+        boardMatching.setPlace("하나누리");
+        boardMatching.setUserInfo(user);
+        boardRepository.save(boardMatching);
 
         // TEST
         System.out.println("게사판:"+boardRepository.findById(1L).orElseThrow(RuntimeException::new));
 
-        System.out.println("글 작성자:"+userInfoRepositoty.findById(1L).orElseThrow(RuntimeException::new).getUserId());
+        System.out.println("글 작성자:"+ userInfoRepository.findById(1L).orElseThrow(RuntimeException::new).getUserId());
     }
 }

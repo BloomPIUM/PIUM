@@ -19,7 +19,7 @@
 
 <div class="container">
   <h2>게시글 작성</h2>
-  <form th:action="@{/board/write}" method="post">
+  <form th:action="@{/boardMatching/write}" method="post">
     <div class="mb-3">
       <label for="title" class="form-label">제목</label>
       <input type="text" class="form-control" id="title" name="title" th:value="${title}">

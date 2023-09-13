@@ -1,6 +1,6 @@
 package com.bloom.pium.controller;
 
-import com.bloom.pium.data.dto.CommentResponseDto;
+import com.bloom.pium.data.dto.CommentDto;
 import com.bloom.pium.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class CommentController {
     }
 
     @PostMapping("/write")
-    public ResponseEntity<CommentResponseDto> CommentWrite(Long pComment,CommentResponseDto commentResponseDto){
-        commentService.writeComment(pComment,commentResponseDto);
-        return ResponseEntity.status(HttpStatus.OK).body(commentResponseDto);
+    public ResponseEntity<CommentDto> CommentWrite( CommentDto CommentDto){
+        commentService.writeComment(CommentDto);
+        return ResponseEntity.status(HttpStatus.OK).body(CommentDto);
     }
 
 }

@@ -36,9 +36,9 @@ public class BoardMatching extends Board {
     @ToString.Exclude
     private UserInfo userInfo;
 
-//    @OneToMany(mappedBy = "boardMatching", fetch =FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//    @Column(unique = false)
-//    private List<Comment> comment;
+    @OneToMany(mappedBy = "boardMatching", fetch =FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(unique = false)
+    private List<Comment> comment;
 
 
 }

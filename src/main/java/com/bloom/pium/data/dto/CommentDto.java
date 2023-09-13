@@ -7,10 +7,13 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class CommentResponseDto {
+public class CommentDto {
+
     private String content;
-//    private Long pContentId;
-//    private Long cContentId;
+    private Long pContentId;
+    private Long cContentId;
+    private Long boardId;
+    private Long userId;
 
 
 

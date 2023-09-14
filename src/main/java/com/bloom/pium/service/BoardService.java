@@ -3,6 +3,7 @@ package com.bloom.pium.service;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
+import com.bloom.pium.data.entity.BoardMatching;
 import org.springframework.data.domain.Page;
 
 public interface BoardService {
@@ -23,5 +24,10 @@ public interface BoardService {
 
     // 전체 게시글 가져오기 (페이징)
     Page<BoardResponseDto> getAllBoards(int page);
-   
+
+
+
+    // 게시판 좋아요(추천) 토글 메서드
+    BoardResponseDto toggleLike(Long boardId, Long userId);
+
 }

@@ -28,6 +28,10 @@ public class BoardMatching extends Board {
     @Column(nullable = true)
     private int likeCnt;
 
+    @OneToMany(mappedBy = "boardMatching", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(unique = false)
+    private List<BoardLike> boardLikes;
+
     @Column(nullable = true)
     private int viewCnt;
 

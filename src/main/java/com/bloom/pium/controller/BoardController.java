@@ -32,7 +32,7 @@ public class BoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
     @DeleteMapping("/delete")
-   public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
+    public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
         boardService.deleteBoard(boardId);
 
         return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다");
@@ -44,6 +44,15 @@ public class BoardController {
             @RequestParam(defaultValue = "1") int page  // ,@RequestParam(defaultValue = "10") int size
           ) {
         return boardService.getAllBoards(page);
+    }
+
+    @PostMapping("/{boardId}/like/{userId}")
+    public ResponseEntity<BoardResponseDto> toggleLike(
+            @PathVariable Long boardId,
+            @PathVariable Long userId
+    ) {
+        BoardResponseDto updatedBoard = boardService.toggleLike(boardId, userId);
+        return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
     }
 
 }

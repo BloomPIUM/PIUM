@@ -51,4 +51,20 @@ public class MessageServiceImpl implements MessageService {
 
         return messageSave;
     }
+
+    @Override
+    public void readMessageStatus(Long messageId) {
+        messageRepository.findById(messageId).orElseThrow(RuntimeException::new);
+
+        Message message = messageRepository.findById(messageId).get();
+        message.setCheckStatus(true);
+        messageRepository.save(message);
+
+    }
+
+    @Override
+    public int getUnreadMessageCount(UserInfo recipient) {
+        int countUnRead= messageRepository.countByRecipientAndCheckStatus(recipient,false);
+        return countUnRead;
+    }
 }

@@ -37,7 +37,4 @@ public class Comment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserInfo userInfo;
-
-
-
 }

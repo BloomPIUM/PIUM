@@ -1,6 +1,9 @@
 package com.bloom.pium.service;
 
 import com.bloom.pium.data.dto.CommentDto;
+import com.bloom.pium.data.dto.CommentResponseDto;
+
+import java.util.List;
 
 public interface CommentService {
 
@@ -15,7 +18,8 @@ public interface CommentService {
 
     // 댓글 조회 -> 댓글 정렬
 
-
-
-
+    // ↓↓ 추가 (2023.09.16.토)
+    List<CommentResponseDto> getCommentsByBoardId(Long boardId);
+    List<CommentResponseDto> getCommentsByUserId(Long userId);
+    // ↑↑ 추가 (2023.09.16.토)
 }

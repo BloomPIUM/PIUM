@@ -1,7 +1,9 @@
 package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.CommentDto;
+import com.bloom.pium.data.dto.CommentResponseDto;
 import com.bloom.pium.data.entity.Comment;
+import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.data.repository.BoardRepository;
 import com.bloom.pium.data.repository.CommentRepository;
 import com.bloom.pium.data.repository.UserInfoRepository;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -38,7 +42,7 @@ public class CommentServiceImpl implements CommentService {
             comment.setBoardMatching(boardRepository.findById(commentDto.getBoardId()).get());
             comment.setUserInfo(userInfoRepository.findById(commentDto.getUserId()).get());
             comment.setCreatedDate(LocalDateTime.now());
-            comment.setModifiedDate(LocalDateTime.now());
+//            comment.setModifiedDate(LocalDateTime.now()); // 댓글 작성에는 필요없음
 
             commentRepository.save(comment);
         }else {
@@ -50,7 +54,7 @@ public class CommentServiceImpl implements CommentService {
             commentC.setUserInfo(userInfoRepository.findById(commentDto.getUserId()).get());
             commentC.setPComment(commentRepository.findById(commentDto.getPContentId()).get());
             commentC.setCreatedDate(LocalDateTime.now());
-            commentC.setModifiedDate(LocalDateTime.now());
+//            commentC.setModifiedDate(LocalDateTime.now()); // 댓글 작성에는 필요 없음
             commentRepository.save(commentC);
 
             // 부모의 자식 업데이트?
@@ -66,5 +70,37 @@ public class CommentServiceImpl implements CommentService {
 
     }
 
+    // ↓↓ 추가 (2023.09.16.토)
+    // 게시글 불러오기 전 셋팅용
+    private CommentResponseDto convertToCommentDto(Comment comment) {
+        CommentResponseDto commentResponseDto = new CommentResponseDto();
+//        commentResponseDto.setCommentId(comment.getCommentId()); // 코멘트 고유번호까지는 필요 없을거 같음
+        commentResponseDto.setContent(comment.getContent());
+        commentResponseDto.setUserId(comment.getUserInfo().getUserId()); // ID랑 name중에 하나만 써도 무방함.
+        UserInfo userInfo = comment.getUserInfo();
+        if (userInfo != null) {
+            commentResponseDto.setUsername(userInfo.getUsername());
+        }
+        commentResponseDto.setBoardId(comment.getBoardMatching().getBoardId());
+        commentResponseDto.setCreatedDate(comment.getCreatedDate());
+        commentResponseDto.setModifiedDate(comment.getModifiedDate());
+        return commentResponseDto;
+    }
 
+    @Override
+    public List<CommentResponseDto> getCommentsByBoardId(Long boardId) {
+        List<Comment> comments = commentRepository.findByBoardMatching_BoardId(boardId);
+        return comments.stream()
+                .map(this::convertToCommentDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CommentResponseDto> getCommentsByUserId(Long userId) {
+        List<Comment> comments = commentRepository.findByUserInfo_UserId(userId);
+        return comments.stream()
+                .map(this::convertToCommentDto)
+                .collect(Collectors.toList());
+    }
+    // ↑↑ 추가 (2023.09.16.토)
 }

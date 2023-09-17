@@ -2,6 +2,7 @@ package com.bloom.pium.controller;
 
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.service.UserInfoService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/signup")
+    @ApiOperation(value = "회원가입")
     public String signup(@ModelAttribute UserInfoDto userInfoDto, Model model){
 
         if (!userInfoService.isUsernameUnique(userInfoDto.getUsername())) {
@@ -41,6 +43,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "로그인")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
         // 로그인 처리 로직을 여기에 추가
         UserInfoDto checkUserDto = userInfoService.findUsername(username);

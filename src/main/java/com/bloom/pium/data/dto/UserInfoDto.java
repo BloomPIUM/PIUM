@@ -13,6 +13,4 @@ public class UserInfoDto {
     private String name;
     private String phone;
     private String gender;
-
-
 }

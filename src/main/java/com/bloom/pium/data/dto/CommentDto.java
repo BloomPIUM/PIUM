@@ -9,12 +9,9 @@ import lombok.*;
 @Builder
 public class CommentDto {
 
+    private Long boardId;
+    private Long userId;
     private String content;
     private Long pContentId;
     private Long cContentId;
-    private Long boardId;
-    private Long userId;
-
-
-
 }

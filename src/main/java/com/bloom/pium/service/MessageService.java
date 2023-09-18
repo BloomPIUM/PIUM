@@ -13,8 +13,8 @@ public interface MessageService {
     // 쪽지 내용 확인(상세보기) -> 읽음에 따른 상태값 변경 -> 주고 받은 내용?
 
     // 메세지 읽음에 따른 상태값 변경
-    void readMessageStatus(Long messageId);
+    MessageDto readMessageStatus(Long messageId);
 
     // 읽지 않은 쪽지 갯수 조회 = 알림
-    int getUnreadMessageCount(UserInfo recipient);
+    int getUnreadMessageCount(Long recipient);
 }

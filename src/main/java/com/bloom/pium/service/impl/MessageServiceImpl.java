@@ -53,18 +53,30 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public void readMessageStatus(Long messageId) {
+    public MessageDto readMessageStatus(Long messageId) {
         messageRepository.findById(messageId).orElseThrow(RuntimeException::new);
 
         Message message = messageRepository.findById(messageId).get();
         message.setCheckStatus(true);
         messageRepository.save(message);
 
+        // 반환용 builder 패턴
+        MessageDto messageSave = MessageDto.builder()
+                .messageTitle(message.getMessageTitle())
+                .content(message.getContent())
+                .receiveUserName(message.getRecipient().getUserId())
+                .sendUserName(message.getSender().getUserId())
+                .checkStatus(message.isCheckStatus())
+                .build();
+
+        return messageSave;
+
     }
 
     @Override
-    public int getUnreadMessageCount(UserInfo recipient) {
-        int countUnRead= messageRepository.countByRecipientAndCheckStatus(recipient,false);
+    public int getUnreadMessageCount(Long recipient) {
+        UserInfo recipientUser = userInfoRepository.findById(recipient).get();
+        int countUnRead= messageRepository.countByRecipientAndCheckStatus(recipientUser,false);
         return countUnRead;
     }
 }

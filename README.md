@@ -20,6 +20,7 @@ CommentController Class
 코드 작성후
 BoardComment 구현 완료.
 
-
+3차목표 CheckMessage 09.13.23
+강사님께서 수강생들이 구현하길 바라하시던 Security 부분이 필요함.
 
 

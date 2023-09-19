@@ -47,6 +47,11 @@ public class Board {
     private List<Comment> comments = new ArrayList<>();
 
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")    // 운동장비 추천 게시물 매니투원
+    private Category category;
+
+    // Getter와 Setter 메서드는 생략
+
+    // 생성자와 추가 메서드도 필요할 것
 }
-
-

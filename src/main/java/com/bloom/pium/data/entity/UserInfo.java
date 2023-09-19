@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +33,13 @@ public class UserInfo {
     private String gender;
     @Column(nullable = false)
     private String status = "일반";
+
+    // 발신한 메시지 목록
+    @OneToMany(mappedBy = "sender")
+    private List<Message> sentMessages;
+
+    // 수신한 메시지 목록
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    private List<Message> receivedMessages;
 
 }

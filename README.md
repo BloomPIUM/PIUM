@@ -1,5 +1,5 @@
 # PIUM
-1차목표 ModityBoard 09.11.23
+●1차목표 ModityBoard 09.11.23
 
 BoardServiceImpl Override modifyBoard code,
 ModifyBoardDto code,
@@ -8,7 +8,7 @@ BoardCOntroller PutMapping modify code,
 
 ModityBoard 구현 완료.
 
-2차목표 BoardComment 09.13.23
+●2차목표 BoardComment 09.13.23
 
 CommentEntity Class,
 CommentServiceImpl Class,
@@ -20,7 +20,7 @@ CommentController Class
 코드 작성,테스트 후
 BoardComment 구현 완료.
 
-3차목표 CheckMessageByMe 09.19.23
+●3차목표 CheckMessageByMe 09.19.23
 
 MessageController,
 MessageDto,
@@ -32,7 +32,7 @@ MessageServiceInterface
 코드 작성,테스트 후 
 구현 완료.
 
-*MessageRepository @Query 부분 추가후 디버깅완료. 이부분 자체를 인식 못해 애먹음 심도있는 공부 필요.
+**MessageRepository @Query 부분 추가후 디버깅완료. 이부분 자체를 인식 못해 애먹음 심도있는 공부 필요.
 
 
 

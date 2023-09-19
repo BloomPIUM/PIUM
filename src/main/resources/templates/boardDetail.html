@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 내용</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>게시글 상세 내용</h1>
+<table>
+    <tr>
+        <td>제　목 : </td>
+        <td th:text="${board.title}"></td>
+    </tr>
+    <tr>
+        <td>작성자 : </td>
+        <td th:text="${board.username}"></td>
+    </tr>
+    <tr>
+        <td>작성일 : </td>
+        <td th:text="${board.createdDate}"></td>
+    </tr>
+    <tr>
+        <td>내　용 : </td>
+        <td th:text="${board.content}"></td>
+    </tr>
+</table>
+<a th:href="@{/board/{boardId}/list(boardId=${board.boardId})}">뒤로 가기</a>
+</body>
+</html>

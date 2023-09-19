@@ -3,21 +3,29 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.service.BoardService;
+import com.bloom.pium.service.CategoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public BoardController(BoardService boardService){
+    public BoardController(BoardService boardService,
+                           CategoryService categoryService){
         this.boardService = boardService;
+        this.categoryService = categoryService;
     }
 
 
@@ -32,6 +40,7 @@ public class BoardController {
     @ApiOperation(value = "게시글 작성")
     public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
         BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
+        System.out.println(boardResponseDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
     @DeleteMapping("/delete")
@@ -47,7 +56,7 @@ public class BoardController {
     @ApiOperation(value = "페이징")
     public Page<BoardResponseDto> getAllBoards(
             @RequestParam(defaultValue = "1") int page  // ,@RequestParam(defaultValue = "10") int size
-          ) {
+    ) {
         return boardService.getAllBoards(page);
     }
 
@@ -60,4 +69,25 @@ public class BoardController {
         BoardResponseDto updatedBoard = boardService.toggleLike(boardId, userId);
         return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
     }
+
+
+    // ↓↓ 이거 작동 됨
+    @GetMapping("/{boardId}")
+    public ModelAndView getBoardDetail(@PathVariable Long boardId, Model model) {
+        BoardResponseDto board = boardService.getBoardById(boardId);
+        ModelAndView modelAndView = new ModelAndView("boardDetail"); // Thymeleaf 템플릿의 경로
+        modelAndView.addObject("board", board);
+        System.out.println(board);
+        return modelAndView;
+    }
+
+    @GetMapping("/{id}/list")
+    public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) {
+        List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
+        ModelAndView modelAndView = new ModelAndView("boardList"); // Thymeleaf 템플릿의 경로
+        modelAndView.addObject("boards", boards);
+        System.out.println(boards);
+        return modelAndView;
+    }
+    // ↑↑ 이거 작동 됨
 }

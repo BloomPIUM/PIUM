@@ -37,4 +37,8 @@ public interface BoardService {
     // 특정 카테고리의 게시글 불러오기
     List<BoardResponseDto> getBoardMatchingByCategory(Long categoryId);
     // ↑↑ 추가 (2023.09.17.일)
+
+    //
+
+    BoardResponseDto getBoardById(Long boardId);
 }

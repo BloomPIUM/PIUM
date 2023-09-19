@@ -94,6 +94,7 @@ public class BoardServiceImpl implements BoardService {
         boardMatching.setPlace(boardDto.getPlace());
         boardMatching.setViewCnt(0); // 초기값으로 0 설정
         boardMatching.setLikeCnt(0);
+        boardMatching.setCommentCount(0);
         // ↓↓ 추가 (2023.09.17.일)
         boardMatching.setCreatedDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
@@ -262,4 +263,18 @@ public class BoardServiceImpl implements BoardService {
                 .collect(Collectors.toList());
     }
     // ↑↑ 추가 (2023.09.17.일)
+
+    //
+
+    @Override
+    public BoardResponseDto getBoardById(Long boardId) {
+        BoardMatching boardMatching = boardRepository.findById(boardId)
+                .orElseThrow(() -> new RuntimeException("Board not found with id: " + boardId));
+
+        // 여기에서 BoardMatching 엔티티를 BoardResponseDto로 변환하여 리턴하는 로직을 추가해야 합니다.
+        // BoardResponseDto에는 게시글의 상세 정보를 담아야 합니다.
+
+        return convertToDto(boardMatching);
+    }
+
 }

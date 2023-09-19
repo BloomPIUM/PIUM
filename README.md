@@ -31,6 +31,7 @@ MessageServiceImpl,
 MessageServiceInterface
 코드 작성,테스트 후 
 구현 완료.
+
 *MessageRepository @Query 부분 추가후 디버깅완료. 이부분 자체를 인식 못해 애먹음 심도있는 공부 필요.
 
 

@@ -22,7 +22,7 @@ public class BoardServiceImpl  implements BoardService {
 
     private BoardRepository boardRepository;
 
-    private static int size =10;
+    private final static int size =10;
 
     @Autowired
     public BoardServiceImpl(BoardRepository boardRepository){

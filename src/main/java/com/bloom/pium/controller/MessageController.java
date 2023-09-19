@@ -34,11 +34,12 @@ public class MessageController {
     public ResponseEntity<Integer> unReadMessage(@PathVariable Long userId) {
         Integer unreadMessageCount = messageService.getUnreadMessageCount(userId);
 
-        if (unreadMessageCount != null) {
+        //if (unreadMessageCount != null) {
             return ResponseEntity.ok(unreadMessageCount);
-        }
-        else {
-            return ResponseEntity.notFound().build();
-        }
+
+//        else {
+//            return ResponseEntity.notFound().build();
+//        }
     }
+
 }

@@ -21,6 +21,7 @@ public class BoardController {
 
 
     @GetMapping()
+    @ResponseBody
     public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
         BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-public class UserInfoDto {
+public class UserinfoResponseDto {
     private String username;
     private String password;
     private String name;
@@ -19,8 +19,6 @@ public class UserInfoDto {
     private String gender;
     private List<UserRoleEnum> roles = new ArrayList<>();
 
-    public List<UserRoleEnum> getRoles() {
-        return roles;
-    }
+    private String token;
 
 }

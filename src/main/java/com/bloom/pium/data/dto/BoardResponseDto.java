@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @Builder
 public class BoardResponseDto extends Board {
+
     private Long boardId;
     private String title;
     private String content;
@@ -18,6 +19,7 @@ public class BoardResponseDto extends Board {
     private String categoryName;
     private String username;
     private int commentCount;
+
 
 }
 

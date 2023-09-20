@@ -1,5 +1,6 @@
 package com.bloom.pium.data.entity;
 
+
 import com.bloom.pium.data.UserRoleEnum;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -84,4 +85,5 @@ public class UserInfo implements UserDetails {
 //    private List<Message> receivedMessages;
 
 }
+
 

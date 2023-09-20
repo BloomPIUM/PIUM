@@ -11,37 +11,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.bloom.pium.data.dto.ModifyBoardDto;
-import com.bloom.pium.data.repository.CategoryRepository;
-import com.bloom.pium.data.repository.CommentRepository;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-
-@RestController
+@Controller
 @RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
     private final CommentService commentService;
-
     private  final  CategoryService categoryService;
 
     @Autowired
     public BoardController(BoardService boardService,CommentService commentService,CategoryService categoryService) {
         this.boardService = boardService;
-       this.categoryService=categoryService;
-       this.commentService =commentService;
+        this.categoryService=categoryService;
+        this.commentService =commentService;
+    }
+
+    @GetMapping("/form")
+    public String goToBoard() {
+        return "BoardForm";
     }
 
 
     @GetMapping()
-    @ResponseBody
     public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
         BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
+
 
 
 
@@ -108,6 +110,4 @@ public class BoardController {
     }
 
 }
-
-
 

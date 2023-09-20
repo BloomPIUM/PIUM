@@ -9,7 +9,6 @@ import java.util.List;
 public interface MessageRepository extends JpaRepository<Message,Long> {
     int countByRecipientAndCheckStatus(UserInfo recipient , boolean checkStatus);
     List<Message> findByRecipientUsername(String username);
-//    List<Message> findMessageBySenderId(Long senderId); // + 찬혁
 //
     List<Message> findBySenderUserId(Long senderId);
 

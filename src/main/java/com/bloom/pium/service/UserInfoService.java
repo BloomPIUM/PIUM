@@ -3,7 +3,6 @@ package com.bloom.pium.service;
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
 
-
 public interface UserInfoService {
 
     // 이름 유일성 확인

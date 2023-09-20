@@ -17,4 +17,5 @@ public interface BoardRepository extends JpaRepository<BoardMatching,Long> {
 
     List<BoardMatching> findByCategory(Category category);
 
+
 }

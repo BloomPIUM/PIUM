@@ -19,6 +19,7 @@ public interface BoardService {
     BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception;
 
 
+
     //게시글 삭제
     void  deleteBoard(Long boardId) throws Exception;
 
@@ -38,4 +39,5 @@ public interface BoardService {
 
 
     BoardResponseDto getBoardById(Long boardId);
+
 }

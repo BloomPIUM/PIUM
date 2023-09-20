@@ -35,7 +35,7 @@ public class UserInfoController {
             model.addAttribute("error", "이미 사용 중인 아이디입니다.");
             return "SignupPage"; // 중복 아이디인 경우 회원가입 폼으로 다시 이동
         }else{
-           userInfoService.join(userInfoDto);
+            userInfoService.join(userInfoDto);
             return "redirect:/user/login"; // 회원가입 후 로그인 페이지로 리다이렉트
         }
 

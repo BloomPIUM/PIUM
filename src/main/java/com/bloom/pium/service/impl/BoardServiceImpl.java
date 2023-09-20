@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-    // 안써서 일단 주석처리함 (2023.09.17.일)
-    // private final Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
 
     private BoardRepository boardRepository;
     private UserInfoRepository userInfoRepository;
@@ -78,7 +76,7 @@ public class BoardServiceImpl implements BoardService {
             return null; // Handle the case where the board is not found
         }
     }
-    // ↑↑ 수정 (2023.09.17.일)
+
 
     @Override
     public BoardResponseDto saveBoard(BoardDto boardDto) {
@@ -116,13 +114,13 @@ public class BoardServiceImpl implements BoardService {
         boardResponseDto.setTitle(savedBoardMatching.getTitle());
         boardResponseDto.setContent(savedBoardMatching.getContent());
 
-        // ↓↓ 추가 (2023.09.17.일)
+
         boardResponseDto.setCreatedDate(LocalDateTime.now());
         String categoryName = boardMatching.getCategory() != null ? boardMatching.getCategory().getName() : null;
         boardResponseDto.setCategoryName(categoryName);
         String userName = boardMatching.getUserInfo() != null ? boardMatching.getUserInfo().getUsername() : null;
         boardResponseDto.setUsername(userName);
-        // ↑↑ 추가 (2023.09.17.일)
+
         return boardResponseDto;
     }
 
@@ -171,27 +169,29 @@ public class BoardServiceImpl implements BoardService {
 
     // Board 엔티티를 BoardResponseDto로 변환하는 메서드
     private BoardResponseDto convertToDto(BoardMatching board) {
-        BoardResponseDto boardResponseDto = new BoardResponseDto();
-        boardResponseDto.setBoardId(board.getBoardId());
-        boardResponseDto.setTitle(board.getTitle());
-        boardResponseDto.setContent(board.getContent());
-        boardResponseDto.setViewCnt(board.getViewCnt());
-        boardResponseDto.setLikeCnt(board.getLikeCnt());
 
-        boardResponseDto.setCreatedDate(board.getCreatedDate());
-        boardResponseDto.setModifiedDate(board.getModifiedDate());
-        boardResponseDto.setCommentCount(board.getCommentCount());
+            BoardResponseDto boardResponseDto = new BoardResponseDto();
+            boardResponseDto.setBoardId(board.getBoardId());
+            boardResponseDto.setTitle(board.getTitle());
+            boardResponseDto.setContent(board.getContent());
+            boardResponseDto.setViewCnt(board.getViewCnt());
+            boardResponseDto.setLikeCnt(board.getLikeCnt());
 
-        // Fetch the category name from the board's category
-        String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
-        boardResponseDto.setCategoryName(categoryName);
+            boardResponseDto.setCreatedDate(board.getCreatedDate());
+            boardResponseDto.setModifiedDate(board.getModifiedDate());
+            boardResponseDto.setCommentCount(board.getCommentCount());
 
-        // Fetch the username from the associated UserInfo
-        UserInfo userInfo = board.getUserInfo();
-        if (userInfo != null) {
-            boardResponseDto.setUsername(userInfo.getUsername());
-        }
-        return boardResponseDto;
+            // Fetch the category name from the board's category
+            String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
+            boardResponseDto.setCategoryName(categoryName);
+
+            // Fetch the username from the associated UserInfo
+            UserInfo userInfo = board.getUserInfo();
+            if (userInfo != null) {
+                boardResponseDto.setUsername(userInfo.getUsername());
+            }
+            return boardResponseDto;
+
     }
 
     // 좋아요
@@ -254,8 +254,7 @@ public class BoardServiceImpl implements BoardService {
         return null;
     }
 
-    // ↓↓ 추가 (2023.09.17.일)
-    // 카테고리별로 게시글 불러오기
+
     @Override
     public List<BoardResponseDto> getBoardMatchingByCategory(Long categoryId) {
         // 카테고리를 조회합니다.
@@ -270,9 +269,7 @@ public class BoardServiceImpl implements BoardService {
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
-    // ↑↑ 추가 (2023.09.17.일)
 
-    //
 
     @Override
     public BoardResponseDto getBoardById(Long boardId) {

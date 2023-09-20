@@ -85,6 +85,7 @@ public class CategoryServiceImpl implements CategoryService {
         boardResponseDto.setLikeCnt(boardMatching.getLikeCnt());
         boardResponseDto.setCreatedDate(boardMatching.getCreatedDate());
         boardResponseDto.setModifiedDate(boardMatching.getModifiedDate());
+        boardResponseDto.setCommentCount(boardMatching.getCommentCount());
 
         // Fetch the category name from the board's category
         String categoryName = boardMatching.getCategory() != null ? boardMatching.getCategory().getName() : null;

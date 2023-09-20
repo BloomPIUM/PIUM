@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,9 +36,10 @@ public class CommentController {
     // ↓↓ 추가 (2023.09.16.토)
     @GetMapping("/byBoard/{boardId}")
     @ApiOperation(value = "게시글ID로 댓글 불러오기")
-    public ResponseEntity<List<CommentResponseDto>> getCommentsByBoardId(@PathVariable Long boardId) {
+    public String getCommentsByBoardId(@PathVariable Long boardId, Model model) {
         List<CommentResponseDto> comments = commentService.getCommentsByBoardId(boardId);
-        return ResponseEntity.status(HttpStatus.OK).body(comments);
+        model.addAttribute("comments", comments);
+        return "comment"; // comment.html 템플릿을 렌더링
     }
 
     @GetMapping("/byUser/{userId}")

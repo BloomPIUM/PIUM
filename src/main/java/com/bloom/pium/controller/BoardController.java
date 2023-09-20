@@ -2,8 +2,10 @@ package com.bloom.pium.controller;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
+import com.bloom.pium.data.dto.CommentResponseDto;
 import com.bloom.pium.service.BoardService;
 import com.bloom.pium.service.CategoryService;
+import com.bloom.pium.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,21 +22,24 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
     private final CategoryService categoryService;
+    private final CommentService commentService;
 
     @Autowired
     public BoardController(BoardService boardService,
-                           CategoryService categoryService){
+                           CategoryService categoryService,
+                           CommentService commentService){
         this.boardService = boardService;
         this.categoryService = categoryService;
+        this.commentService = commentService;
     }
 
 
-    @GetMapping()
-    @ApiOperation(value = "게시글 불러오기")
-    public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
-        BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
-    }
+//    @GetMapping()
+//    @ApiOperation(value = "게시글 불러오기")
+//    public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
+//        BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
+//        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+//    }
 
     @PostMapping("/write")
     @ApiOperation(value = "게시글 작성")
@@ -73,20 +78,14 @@ public class BoardController {
 
     // ↓↓ 이거 작동 됨
     @GetMapping("/{boardId}")
+    @ApiOperation(value = "n번 게시글 내용 + 댓글")
     public ModelAndView getBoardDetail(@PathVariable Long boardId, Model model) {
         BoardResponseDto board = boardService.getBoardById(boardId);
         ModelAndView modelAndView = new ModelAndView("boardDetail"); // Thymeleaf 템플릿의 경로
         modelAndView.addObject("board", board);
+        List<CommentResponseDto> comments = commentService.getCommentsByBoardId(boardId);
+        model.addAttribute("comments", comments);
         System.out.println(board);
-        return modelAndView;
-    }
-
-    @GetMapping("/{id}/list")
-    public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) {
-        List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
-        ModelAndView modelAndView = new ModelAndView("boardList"); // Thymeleaf 템플릿의 경로
-        modelAndView.addObject("boards", boards);
-        System.out.println(boards);
         return modelAndView;
     }
     // ↑↑ 이거 작동 됨

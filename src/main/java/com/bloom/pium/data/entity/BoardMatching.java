@@ -45,13 +45,10 @@ public class BoardMatching extends Board {
     private List<Comment> comment;
 
     // ↓↓ 추가 (2023.09.17.일)
-    public int getCommentCount() {
-        if (comment != null) {
-            return comment.size();
-        }
-        return 0;
-    }
+
+    @Column(nullable = true)
     private int commentCount;
+
     @ManyToOne
     @JoinColumn(name = "category_id") // 카테고리와 연결할 외래 키
     private Category category;

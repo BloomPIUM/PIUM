@@ -2,6 +2,7 @@ package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
+import com.bloom.pium.data.dto.CommentDto;
 import com.bloom.pium.data.entity.BoardLike;
 import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.entity.Category;
@@ -170,8 +171,7 @@ public class BoardServiceImpl implements BoardService {
         boardResponseDto.setLikeCnt(board.getLikeCnt());
         boardResponseDto.setCreatedDate(board.getCreatedDate());
         boardResponseDto.setModifiedDate(board.getModifiedDate());
-        int commentCount = board.getCommentCount();
-        boardResponseDto.setCommentCount(commentCount);
+        boardResponseDto.setCommentCount(board.getCommentCount());
 
         // Fetch the category name from the board's category
         String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
@@ -228,8 +228,7 @@ public class BoardServiceImpl implements BoardService {
             // ↓↓ 추가 (2023.09.17.일)
             boardResponseDto.setCreatedDate(boardMatching.getCreatedDate());
             boardResponseDto.setModifiedDate(boardMatching.getModifiedDate());
-            int commentCount = boardMatching.getCommentCount();
-            boardResponseDto.setCommentCount(commentCount);
+            boardResponseDto.setCommentCount(boardMatching.getCommentCount());
             // Fetch the category name from the board's category
             String categoryName = boardMatching.getCategory() != null ? boardMatching.getCategory().getName() : null;
             boardResponseDto.setCategoryName(categoryName);

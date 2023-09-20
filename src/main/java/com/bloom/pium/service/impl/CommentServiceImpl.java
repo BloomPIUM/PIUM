@@ -2,6 +2,7 @@ package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.CommentDto;
 import com.bloom.pium.data.dto.CommentResponseDto;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.entity.Comment;
 import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.data.repository.BoardRepository;
@@ -43,9 +44,14 @@ public class CommentServiceImpl implements CommentService {
             comment.setUserInfo(userInfoRepository.findById(commentDto.getUserId()).get());
             comment.setCreatedDate(LocalDateTime.now());
 //            comment.setModifiedDate(LocalDateTime.now()); // 댓글 작성에는 필요없음
+            BoardMatching boardMatching = boardRepository.findById(commentDto.getBoardId())
+                    .orElseThrow(() -> new RuntimeException("BoardMatching not found with id: " + commentDto.getBoardId()));
 
+            // Update the commentCount and save the BoardMatching entity
+            boardMatching.setCommentCount(boardMatching.getCommentCount() + 1);
+            boardRepository.save(boardMatching);
             commentRepository.save(comment);
-        }else {
+        } else {
 
             // 자식 저장
             Comment commentC = new Comment();
@@ -55,6 +61,12 @@ public class CommentServiceImpl implements CommentService {
             commentC.setPComment(commentRepository.findById(commentDto.getPContentId()).get());
             commentC.setCreatedDate(LocalDateTime.now());
 //            commentC.setModifiedDate(LocalDateTime.now()); // 댓글 작성에는 필요 없음
+            BoardMatching boardMatching = boardRepository.findById(commentDto.getBoardId())
+                    .orElseThrow(() -> new RuntimeException("BoardMatching not found with id: " + commentDto.getBoardId()));
+
+            // Update the commentCount and save the BoardMatching entity
+            boardMatching.setCommentCount(boardMatching.getCommentCount() + 1);
+            boardRepository.save(boardMatching);
             commentRepository.save(commentC);
 
             // 부모의 자식 업데이트?
@@ -66,9 +78,9 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void DeleteCToComment(Long commentId) {
        // 상위 댓글 삭제 시 하위 댓글 전체 삭제
-
-
     }
+
+
 
     // ↓↓ 추가 (2023.09.16.토)
     // 게시글 불러오기 전 셋팅용

@@ -1,6 +1,5 @@
 package com.bloom.pium.data.repository;
 
-
 import com.bloom.pium.data.entity.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

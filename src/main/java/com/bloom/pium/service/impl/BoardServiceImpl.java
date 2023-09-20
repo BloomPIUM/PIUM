@@ -3,7 +3,9 @@ package com.bloom.pium.service.impl;
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.entity.Board;
+import com.bloom.pium.data.entity.Category;
 import com.bloom.pium.data.repository.BoardRepository;
+import com.bloom.pium.data.repository.CategoryRepository;
 import com.bloom.pium.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +18,15 @@ import java.time.LocalDateTime;
 public class BoardServiceImpl  implements BoardService {
     private final Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
 
-    private BoardRepository boardRepository;
-
+    private final BoardRepository boardRepository;
+    private final CategoryRepository categoryRepository; // CategoryRepository 주입
     @Autowired
-    public BoardServiceImpl(BoardRepository boardRepository){
+    public BoardServiceImpl(BoardRepository boardRepository, CategoryRepository categoryRepository) {
         this.boardRepository = boardRepository;
+        this.categoryRepository = categoryRepository;
     }
+
+
 
     // 조회
     @Override
@@ -47,6 +52,10 @@ public class BoardServiceImpl  implements BoardService {
         board.setLikeCnt(0);
         board.setCreatedDate(LocalDateTime.now());
         board.setModifiedDate(LocalDateTime.now());
+
+// 카테고리 설정
+        Category category = categoryRepository.findById(boardDto.getCategoryId()).orElse(null);
+        board.setCategory(category);
 
         Board savedBoard = boardRepository.save(board);
 

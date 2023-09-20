@@ -46,10 +46,16 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
+    @Column(name = "category_id", insertable = false, updatable = false)
+    private Long categoryId;
 
     @ManyToOne
     @JoinColumn(name = "category_id")    // 운동장비 추천 게시물 매니투원
-    private Category category;
+    private Category category; // Board와 Category 간의 관계 설정
+
+
+
+
 
     // Getter와 Setter 메서드는 생략
 

@@ -12,6 +12,7 @@ public class BoardDto {
     private String content;
     private  String schedule;
     private  String place;
+    private Long categoryId; // 카테고리의 ID
 
 //    private int likeCnt;
 //    private int viewCnt;

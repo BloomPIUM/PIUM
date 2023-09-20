@@ -3,9 +3,7 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.dto.ModifyBoardDto;
-import com.bloom.pium.data.entity.Board;
-import com.bloom.pium.data.entity.Category;
-import com.bloom.pium.data.repository.BoardRepository;
+
 import com.bloom.pium.data.repository.CategoryRepository;
 import com.bloom.pium.data.repository.CommentRepository;
 import com.bloom.pium.service.BoardService;
@@ -13,16 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-
-import java.util.List;
 
 
 @RestController
 @RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
+
     private final CommentRepository commentRepository;
     private final CategoryRepository categoryRepository;
 

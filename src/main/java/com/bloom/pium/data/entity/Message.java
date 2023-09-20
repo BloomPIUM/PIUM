@@ -1,8 +1,8 @@
 package com.bloom.pium.data.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
+import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="message")
 public class Message {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long messageId;
@@ -37,8 +38,9 @@ public class Message {
     @Column(nullable = false, columnDefinition = "TINYINT(1) default 0")
     private boolean checkStatus;
 
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime createdDate;
+    @CreationTimestamp
+    @Column(nullable = false)
+    private LocalDateTime createdDate; // 댓글 작성일
 
 }
+

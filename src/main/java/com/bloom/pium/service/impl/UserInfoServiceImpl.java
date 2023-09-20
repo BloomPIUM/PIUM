@@ -1,7 +1,7 @@
 package com.bloom.pium.service.impl;
 
+
 import com.bloom.pium.config.security.JwtTokenProvider;
-import com.bloom.pium.data.UserRoleEnum;
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
 import com.bloom.pium.data.entity.UserInfo;
@@ -10,10 +10,8 @@ import com.bloom.pium.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Collections;
-
-
-import static com.bloom.pium.data.UserRoleEnum.ADMIN;
 import static com.bloom.pium.data.UserRoleEnum.USER;
 
 @Service
@@ -26,6 +24,7 @@ public class UserInfoServiceImpl  implements UserInfoService {
     public  UserInfoServiceImpl(UserInfoRepository userInfoRepository, JwtTokenProvider jwtTokenProvider){
         this.userInfoRepository = userInfoRepository;
         this.jwtTokenProvider = jwtTokenProvider;
+
     }
 
     @Override
@@ -59,6 +58,7 @@ public class UserInfoServiceImpl  implements UserInfoService {
         user.setRoles(findUser.getRoles());
         user.setToken(jwtTokenProvider.createToken(user.getUsername(), user.getRoles()));
         return user;
+
     }
 
 

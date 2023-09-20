@@ -21,6 +21,7 @@ public class MessageDto {
 
     private LocalDateTime createdDate;
 
-    private String senderUsername; // ?
-    private String receiverUsername; // ?
+    private String senderUsername; //
+    private String receiverUsername; //
+
 }

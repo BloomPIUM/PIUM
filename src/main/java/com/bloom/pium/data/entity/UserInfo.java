@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Getter
 @Setter
 @Builder
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "userinfo")
 public class UserInfo implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -71,4 +73,15 @@ public class UserInfo implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+//    // 발신한 메시지 목록
+//    @OneToMany(mappedBy = "sender")
+//    private List<Message> sentMessages;
+//
+//    // 수신한 메시지 목록
+//    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+//    private List<Message> receivedMessages;
+
 }
+

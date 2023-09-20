@@ -39,6 +39,7 @@ public class BoardServiceImpl  implements BoardService {
         boardResponseDto.setViewCnt(boardMatching.getViewCnt());
         boardResponseDto.setLikeCnt(boardMatching.getLikeCnt());
 
+
         return boardResponseDto;
     }
 
@@ -66,7 +67,18 @@ public class BoardServiceImpl  implements BoardService {
 
     @Override
     public BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception {
-        return null;
+        BoardMatching foundBoard = boardRepository.findById(boardId).get();
+        foundBoard.setTitle(title);
+        foundBoard.setContent(content);
+
+        BoardMatching changedBoard = boardRepository.save(foundBoard);
+
+        BoardResponseDto boardResponseDto = new BoardResponseDto();
+        boardResponseDto.setBoardId(changedBoard.getBoardId());
+        boardResponseDto.setTitle(changedBoard.getTitle());
+        boardResponseDto.setContent(changedBoard.getContent());
+
+        return boardResponseDto;
     }
 
     @Override
@@ -110,4 +122,3 @@ public class BoardServiceImpl  implements BoardService {
     }
 
 }
-

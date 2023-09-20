@@ -52,6 +52,7 @@ dependencies {
 
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' // 타임리프에서 로그인 정보를 확인
 
+
 }
 
 tasks.named('test') {

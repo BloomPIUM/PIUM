@@ -5,6 +5,7 @@ import com.bloom.pium.data.entity.Message;
 import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.data.repository.MessageRepository;
 import com.bloom.pium.data.repository.UserInfoRepository;
+import com.bloom.pium.data.dto.MessageResponseDto;
 import com.bloom.pium.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,30 @@ public class MessageServiceImpl implements MessageService {
                 .build();
 
         return messageSave;
+    }
+
+
+    @Override
+    public List<MessageResponseDto> getSentMessagesByUserId(Long userId) {
+        List<Message> sentMessages = messageRepository.findBySenderUserId(userId);
+        return convertToResponseDtoList(sentMessages);
+    }
+
+    // convertToResponseDtoList 메서드 구현
+
+    private List<MessageResponseDto> convertToResponseDtoList(List<Message> messages) {
+        return messages.stream()
+                .map(this::convertToResponseDto)
+                .collect(Collectors.toList());
+    }
+
+    private MessageResponseDto convertToResponseDto(Message message) {
+        MessageResponseDto responseDto = new MessageResponseDto();
+        responseDto.setMessageId(message.getMessageId());
+        responseDto.setMessageTitle(message.getMessageTitle());
+        responseDto.setMessageContent(message.getContent());
+        responseDto.setCreatedDate(message.getCreatedDate());
+        return responseDto;
     }
 
     // 메세지 불러오기
@@ -126,4 +151,7 @@ public class MessageServiceImpl implements MessageService {
                 .createdDate(message.getCreatedDate())
                 .build();
     }
+
+
+
 }

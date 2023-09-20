@@ -14,4 +14,5 @@ public class CommentResponseDto {
 //    private Long cContentId;
     private Long boardId;
     private Long userId;
+
 }

@@ -1,6 +1,7 @@
 package com.bloom.pium.controller;
 
 import com.bloom.pium.data.dto.MessageDto;
+import com.bloom.pium.data.dto.MessageResponseDto;
 import com.bloom.pium.service.MessageService;
 import com.bloom.pium.service.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class MessageController {
     public ResponseEntity<List<MessageDto>> getMessageByUsername(@PathVariable String username) {
         List<MessageDto> messages = messageService.getMessageByUsername(username);
         return ResponseEntity.ok(messages);
+    }
+
+    @GetMapping("/sent/{userId}")
+    public ResponseEntity<List<MessageResponseDto>> getSentMessagesByUserId(@PathVariable Long userId) {
+        List<MessageResponseDto> sentMessages = messageService.getSentMessagesByUserId(userId);
+        return new ResponseEntity<>(sentMessages, HttpStatus.OK);
     }
 
     // 메세지 불러오기

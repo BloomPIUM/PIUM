@@ -5,6 +5,7 @@ import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import org.springframework.data.domain.Page;
 
+
 public interface BoardService {
     // 게시글 조회
     BoardResponseDto getBoard(Long boardId);
@@ -24,4 +25,5 @@ public interface BoardService {
     // 전체 게시글 가져오기 (페이징)
     Page<BoardResponseDto> getAllBoards(int page);
    
+
 }

@@ -48,21 +48,20 @@ public class UserInfoController {
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
         // 로그인 처리 로직을 여기에 추가
         UserinfoResponseDto checkUserDto = userInfoService.findUsername(username);
+
         // 입력값과 데이터베이스에서 조회한 엔티티 비교
         if (username != null && checkUserDto.getUsername().equals(username)) {
             // 값이 일치하는 경우
-            if(password != null && checkUserDto.getPassword().equals(password)){
+            if (password != null && checkUserDto.getPassword().equals(password)) {
                 return "redirect:/board/write";
-            }else{
+            } else {
                 model.addAttribute("error", "비밀번호를 확인해주세요.");
             }
         }
 
-            // 값이 불일치하는 경우
-            model.addAttribute("error", "회원가입을 진행해주세요");
-            return "redirect:/SignupPage";
-
+        // 값이 불일치하는 경우
+        model.addAttribute("error", "회원가입을 진행해주세요");
+        return "redirect:/SignupPage";
 
     }
-
 }

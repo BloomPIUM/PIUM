@@ -1,7 +1,7 @@
 package com.bloom.pium.service;
 
 import com.bloom.pium.data.dto.MessageDto;
-import com.bloom.pium.data.entity.UserInfo;
+import com.bloom.pium.data.dto.MessageResponseDto;
 
 import java.util.List;
 
@@ -24,4 +24,7 @@ public interface MessageService {
 
     // 메세지 삭제
     void deleteMessageById(Long messageId);
+
+    // 유저 한 명이 보낸 메세지
+    List<MessageResponseDto> getSentMessagesByUserId(Long userId);
 }

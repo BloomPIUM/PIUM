@@ -44,6 +44,7 @@ public class UserInfoServiceImpl  implements UserInfoService {
         user.setStatus("일반");
         user.setRoles(userInfoDto.getRoles());
         user.setRoles(Collections.singletonList(USER)); // 리스트로 해서 사용자0, 관리자1인 리스트 인덱스 값 저장
+
         userInfoRepository.save(user);
 
         return userInfoDto;

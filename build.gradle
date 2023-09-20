@@ -42,6 +42,7 @@ dependencies {
     // h2 테스트
     testImplementation 'com.h2database:h2'
 
+
     //
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
@@ -51,6 +52,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' // 타임리프에서 로그인 정보를 확인
+
 
 
 }

@@ -3,6 +3,7 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
 import com.bloom.pium.service.UserInfoService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ public class UserInfoController {
 
 
     @PostMapping("/signup")
+    @ApiOperation(value = "회원가입")
     public String signup(@ModelAttribute UserInfoDto userInfoDto, Model model){
 
         if (!userInfoService.isUsernameUnique(userInfoDto.getUsername())) {
@@ -45,6 +47,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "로그인")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
         // 로그인 처리 로직을 여기에 추가
         UserinfoResponseDto checkUserDto = userInfoService.findUsername(username);
@@ -52,6 +55,7 @@ public class UserInfoController {
         // 입력값과 데이터베이스에서 조회한 엔티티 비교
         if (username != null && checkUserDto.getUsername().equals(username)) {
             // 값이 일치하는 경우
+
             if (password != null && checkUserDto.getPassword().equals(password)) {
                 return "redirect:/board/write";
             } else {
@@ -63,5 +67,7 @@ public class UserInfoController {
         model.addAttribute("error", "회원가입을 진행해주세요");
         return "redirect:/SignupPage";
 
+
     }
+
 }

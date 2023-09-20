@@ -23,7 +23,10 @@
 - Swager
 - validation
 - h2database
+<<<<<<< HEAD
 - security
 
+=======
+>>>>>>> origin/CategoryToBoardList+Like+CommentList+Category
 
 

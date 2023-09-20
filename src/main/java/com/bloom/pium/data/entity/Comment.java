@@ -39,5 +39,4 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "userId")
     private UserInfo userInfo;
 
-
 }

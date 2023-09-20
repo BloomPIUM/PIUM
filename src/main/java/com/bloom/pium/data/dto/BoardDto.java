@@ -15,6 +15,10 @@ public class BoardDto {
 
 //    private int likeCnt;
 //    private int viewCnt;
+    // ↓↓ 추가 (2023.09.17.일)
+    private Long categoryId;
+    private Long userInfoId;
+
 }
 
 //ProductDto: 클라이언트에서 서버

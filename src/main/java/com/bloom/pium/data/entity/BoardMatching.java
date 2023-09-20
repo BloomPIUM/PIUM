@@ -28,6 +28,11 @@ public class BoardMatching extends Board {
     @Column(nullable = true)
     private int likeCnt;
 
+    @OneToMany(mappedBy = "boardMatching", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(unique = false)
+    private List<BoardLike> boardLikes;
+
+
     @Column(nullable = true)
     private int viewCnt;
 
@@ -40,5 +45,11 @@ public class BoardMatching extends Board {
     @Column(unique = false)
     private List<Comment> comment;
 
+    @Column(nullable = true)
+    private int commentCount;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id") // 카테고리와 연결할 외래 키
+    private Category category;
 
 }

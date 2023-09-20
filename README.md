@@ -27,7 +27,7 @@ MessageController, MessageDto, MessageResponseDto, MessageEntity, MessageReposit
 **MessageRepository @Query 부분 추가후 디버깅완료. 이부분 자체를 인식 못해 애먹음 심도있는 공부 필요.
 
 
-●4차 회의 진행 화면제작 완료 
+●4차 회의 진행,디테일한 기능구현, 화면제작 완료 
 
 
 ●5차목표 운동장비 추천 게시판 만들기 09.20.23

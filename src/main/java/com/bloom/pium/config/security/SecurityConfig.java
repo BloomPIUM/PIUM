@@ -44,7 +44,7 @@ public class SecurityConfig {
         http
                 .httpBasic().disable()
                 .csrf().disable()
-                 //CORS 설정
+                //CORS 설정
                 .cors(c -> {
                             CorsConfigurationSource source = request -> {
                                 // Cors 허용 패턴
@@ -65,7 +65,7 @@ public class SecurityConfig {
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
 
-        // 조건별로 요청 허용/제한 설정
+                // 조건별로 요청 허용/제한 설정
                 .authorizeRequests()
                 .antMatchers("/user/**").permitAll() // 회원가입과 로그인은 모두 승인
                 .antMatchers("/swagger-ui/**").permitAll()
@@ -74,7 +74,7 @@ public class SecurityConfig {
                 .antMatchers("/**").permitAll()//.denyAll()
                 .and()
 
-        // 에러 핸들링
+                // 에러 핸들링
                 .exceptionHandling()
                 .accessDeniedHandler(new AccessDeniedHandler() {
                     @Override

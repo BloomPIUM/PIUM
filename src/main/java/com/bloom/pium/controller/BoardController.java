@@ -1,0 +1,92 @@
+package com.bloom.pium.controller;
+
+import com.bloom.pium.data.dto.BoardDto;
+import com.bloom.pium.data.dto.BoardResponseDto;
+import com.bloom.pium.service.BoardService;
+import com.bloom.pium.service.CategoryService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/board")
+public class BoardController {
+    private final BoardService boardService;
+    private final CategoryService categoryService;
+
+
+    @Autowired
+    public BoardController(BoardService boardService, CategoryService categoryService){
+        this.boardService = boardService;
+        this.categoryService = categoryService;
+    }
+
+
+    @GetMapping()
+    @ApiOperation(value = "게시글 불러오기")
+    public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
+        BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
+    @PostMapping("/write")
+    @ApiOperation(value = "게시글 작성")
+    public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
+        BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+    @DeleteMapping("/delete")
+    @ApiOperation(value = "게시글 삭제")
+    public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
+        boardService.deleteBoard(boardId);
+
+        return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다");
+    }
+
+
+    @GetMapping("/paging")
+    @ApiOperation(value = "페이징")
+    public Page<BoardResponseDto> getAllBoards(
+            @RequestParam(defaultValue = "1") int page  // ,@RequestParam(defaultValue = "10") int size
+          ) {
+        return boardService.getAllBoards(page);
+    }
+
+    @PostMapping("/{boardId}/like/{userId}")
+    @ApiOperation(value = "좋아요")
+    public ResponseEntity<BoardResponseDto> toggleLike(
+            @PathVariable Long boardId,
+            @PathVariable Long userId
+    ) {
+        BoardResponseDto updatedBoard = boardService.toggleLike(boardId, userId);
+        return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
+    }
+
+    //게시글 목록
+    @GetMapping("/{id}/list")
+    public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) throws IOException  {
+        List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
+        ModelAndView modelAndView = new ModelAndView("BoardList");
+        modelAndView.addObject("boards", boards);
+        System.out.println(boards);
+        return modelAndView;
+    }
+
+    @GetMapping("/write") // GET 요청을 처리하도록 수정
+    public ModelAndView showWriteForm() {
+        ModelAndView modelAndView = new ModelAndView("BoardForm");
+
+        // 글 작성 양식을 표시하는 뷰 이름을 리턴
+        return modelAndView; // BoardForm.html로 리턴
+    }
+
+}

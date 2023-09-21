@@ -71,7 +71,7 @@ public class SecurityConfig {
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 //.antMatchers("/board/**").hasRole("USER")
-                .antMatchers("/**").denyAll()
+                .antMatchers("/**").permitAll()//.denyAll()
                 .and()
 
         // 에러 핸들링

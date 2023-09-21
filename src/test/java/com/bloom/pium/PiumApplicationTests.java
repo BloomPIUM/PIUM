@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Pium5categoryApplicationTests {
+class PiumApplicationTests {
 
     @Test
     void contextLoads() {

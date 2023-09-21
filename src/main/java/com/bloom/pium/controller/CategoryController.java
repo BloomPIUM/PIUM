@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -40,12 +39,12 @@ public class CategoryController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation(value = "특정 카테고리") // 크게 의미 없는 기능
-    public ResponseEntity<CategoryResponseDto> getCategoryById(@PathVariable Long id) {
-        CategoryResponseDto category = categoryService.getCategoryById(id);
-        return new ResponseEntity<>(category, HttpStatus.OK);
-    }
+//    @GetMapping("/{id}")
+//    @ApiOperation(value = "특정 카테고리") // 크게 의미 없는 기능
+//    public ResponseEntity<CategoryResponseDto> getCategoryById(@PathVariable Long id) {
+//        CategoryResponseDto category = categoryService.getCategoryById(id);
+//        return new ResponseEntity<>(category, HttpStatus.OK);
+//    }
 
     @PutMapping("/{id}")
     @ApiOperation(value = "카테고리 수정")
@@ -61,14 +60,25 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/{id}/boardMatching")
-    @ApiOperation(value = "특정 카테고리의 게시글 불러오기") // 주기능
-    public ModelAndView getBoardMatchingByCategory(@PathVariable Long id, Model model) throws IOException {
-        List<BoardResponseDto> matchingboards = categoryService.getBoardMatchingByCategory(id);
-        ModelAndView modelAndView = new ModelAndView("BoardMatching");
-        modelAndView.addObject("matchingboards", matchingboards);
-        System.out.println(matchingboards);
+//    @GetMapping("/{id}/board-matching")
+//    @ApiOperation(value = "특정 카테고리의 게시글 불러오기") // 주기능
+//    public List<BoardResponseDto> getBoardMatchingByCategory(@PathVariable Long id) {
+//        return categoryService.getBoardMatchingByCategory(id);
+//    }
+    // ↑↑ 추가 (2023.09.17.일)
+
+    // ↓↓ 이거 작동 됨
+    @GetMapping("/{id}/list")
+    @ApiOperation(value = "카테고리 ▶ 게시글 리스트")
+    public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) {
+        List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
+        ModelAndView modelAndView = new ModelAndView("mainPage"); // Thymeleaf 템플릿의 경로
+        modelAndView.addObject("boards", boards);
+        System.out.println(boards);
         return modelAndView;
     }
+    // ↑↑ 이거 작동 됨
+
+
 
 }

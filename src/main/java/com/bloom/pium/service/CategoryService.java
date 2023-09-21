@@ -7,7 +7,6 @@ import com.bloom.pium.data.dto.CategoryDto;
 import java.util.List;
 
 public interface CategoryService {
-    // ↓↓ 추가 (2023.09.17.일)
     // 카테고리 생성
     CategoryResponseDto createCategory(CategoryDto categoryDto);
     // 전체 카테고리
@@ -20,5 +19,5 @@ public interface CategoryService {
     void deleteCategory(Long id);
     // 특정 카테고리의 게시글 불러오기
     List<BoardResponseDto> getBoardMatchingByCategory(Long categoryId);
-    // ↑↑ 추가 (2023.09.17.일)
+
 }

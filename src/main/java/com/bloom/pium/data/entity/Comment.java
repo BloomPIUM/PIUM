@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Getter
 @Setter
 @Builder
@@ -37,4 +38,5 @@ public class Comment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserInfo userInfo;
+
 }

@@ -25,5 +25,6 @@ public class Category {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<BoardMatching> boardMatching;
-    // ↑↑ 추가 (2023.09.17.일)
+
 }
+

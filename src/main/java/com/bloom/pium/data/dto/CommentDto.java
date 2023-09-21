@@ -1,5 +1,6 @@
 package com.bloom.pium.data.dto;
 
+import java.time.LocalDateTime;
 import lombok.*;
 
 @Data
@@ -9,9 +10,13 @@ import lombok.*;
 @Builder
 public class CommentDto {
 
-    private Long boardId;
-    private Long userId;
     private String content;
     private Long pContentId;
-    private Long cContentId;
+    private Long boardId;
+    private Long userId;
+
+    private LocalDateTime createdDate;
+
+
+
 }

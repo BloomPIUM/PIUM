@@ -2,37 +2,49 @@ package com.bloom.pium.controller;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
+import com.bloom.pium.data.dto.CommentResponseDto;
+import com.bloom.pium.data.entity.Board;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.service.BoardService;
 import com.bloom.pium.service.CategoryService;
+import com.bloom.pium.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.bloom.pium.data.dto.ModifyBoardDto;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
-    private final CategoryService categoryService;
-
+    private final CommentService commentService;
+    private  final  CategoryService categoryService;
 
     @Autowired
-    public BoardController(BoardService boardService, CategoryService categoryService){
+    public BoardController(BoardService boardService,CommentService commentService,CategoryService categoryService) {
         this.boardService = boardService;
-        this.categoryService = categoryService;
+        this.categoryService=categoryService;
+        this.commentService =commentService;
+    }
+
+    @GetMapping("/form")
+    public String goToBoard() {
+        return "BoardForm";
     }
 
 
     @GetMapping()
-    @ApiOperation(value = "게시글 불러오기")
     public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
         BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
@@ -42,8 +54,23 @@ public class BoardController {
     @ApiOperation(value = "게시글 작성")
     public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
         BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
+        System.out.println(boardResponseDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
+
+
+    @PutMapping("/modify")
+    public ResponseEntity<BoardResponseDto> modifyBoard(
+            @RequestBody ModifyBoardDto modifyBoard) throws Exception {
+        BoardResponseDto boardResponseDto = boardService.modifyBoard(
+                modifyBoard.getBoardId(),
+                modifyBoard.getTitle(),
+                modifyBoard.getContent());
+
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
+
     @DeleteMapping("/delete")
     @ApiOperation(value = "게시글 삭제")
     public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
@@ -57,7 +84,7 @@ public class BoardController {
     @ApiOperation(value = "페이징")
     public Page<BoardResponseDto> getAllBoards(
             @RequestParam(defaultValue = "1") int page  // ,@RequestParam(defaultValue = "10") int size
-          ) {
+    ) {
         return boardService.getAllBoards(page);
     }
 
@@ -71,22 +98,55 @@ public class BoardController {
         return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
     }
 
-    //게시글 목록
-    @GetMapping("/{id}/list")
-    public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) throws IOException  {
-        List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
-        ModelAndView modelAndView = new ModelAndView("BoardList");
-        modelAndView.addObject("boards", boards);
-        System.out.println(boards);
+    @GetMapping("/{boardId}")
+    @ApiOperation(value = "n번 게시글 내용 + 댓글")
+    public ModelAndView getBoardDetail(@PathVariable Long boardId, Model model) {
+        BoardResponseDto board = boardService.getBoardById(boardId);
+        ModelAndView modelAndView = new ModelAndView("boardDetail"); // Thymeleaf 템플릿의 경로
+        modelAndView.addObject("board", board);
+        List<CommentResponseDto> comments = commentService.getCommentsByBoardId(boardId);
+        model.addAttribute("comments", comments);
+        System.out.println(board);
         return modelAndView;
     }
 
-    @GetMapping("/write") // GET 요청을 처리하도록 수정
-    public ModelAndView showWriteForm() {
-        ModelAndView modelAndView = new ModelAndView("BoardForm");
-
-        // 글 작성 양식을 표시하는 뷰 이름을 리턴
-        return modelAndView; // BoardForm.html로 리턴
+    @GetMapping("/mainPage")
+    public String showMainPage(Model model) {
+        List<BoardMatching> mainPage = boardService.getMainPage();
+        model.addAttribute("mainPage", mainPage); // mainPage를 모델에 추가
+        return "mainPage"; // mainPage.html로 이동
     }
 
+    @GetMapping("/searchResults")
+    public String showSearchResults(@RequestParam Long categoryId,
+                                    @RequestParam String keyword, Model model) {
+
+        List<BoardMatching> searchResults = boardService.getSearchResults(categoryId, keyword);
+        model.addAttribute("searchResults", searchResults);
+        return "searchResults"; // searchResults.html로 이동
+    }
+    @GetMapping("/searchTitle")
+    public String search(@RequestParam String searchType,
+                         @RequestParam String keyword,
+                         @RequestParam Long categoryId,
+                         Model model) {
+        List<BoardMatching> searchResults;
+
+        if ("title".equals(searchType)) {
+            searchResults = boardService.searchByTitleAndCategory(categoryId, keyword);
+        } else if ("name".equals(searchType)) {
+            searchResults = boardService.searchByUserInfoNameAndCategory(categoryId, keyword);
+        } else {
+            // 다른 검색 유형에 대한 처리 추가
+            searchResults = Collections.emptyList();
+        }
+
+        model.addAttribute("searchResults", searchResults); // 검색 결과를 모델에 추가
+        return "searchResults"; // searchResults.html로 이동
+    }
+
+
+
+
 }
+

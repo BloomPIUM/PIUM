@@ -1,22 +1,31 @@
 package com.bloom.pium.data.dto;
 
+
 import com.bloom.pium.data.entity.BaseEntity;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Builder
-public class CommentResponseDto extends BaseEntity { // extends 추가 (2023.09.16.토)
 
-//    private Long commentId; // contentId → commentId 변경 (2023.09.16.토), Impl에서도 안쓸거 같아서 일단은 주석처리
+public class CommentResponseDto {
+    private  Long commentId;
     private String content;
-    private Long pContentId;    // 이 값은 왜 있는지 모르겠음
-    private Long cContentId;    // 이 값은 왜 있는지 모르겠음
+    private Long pContentId;
+//    private Long cContentId;
     private Long boardId;
     private Long userId;
-    // ↓↓ 추가 (2023.09.17.일)
+
     private String username;
-    // ↑↑ 추가 (2023.09.17.일)
+
+    private LocalDateTime createdDate;
+
+    private LocalDateTime ModifiedDate;
+
+
+
 }

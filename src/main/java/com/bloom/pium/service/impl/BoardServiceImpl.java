@@ -2,17 +2,12 @@ package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
-import com.bloom.pium.data.entity.BoardLike;
-import com.bloom.pium.data.entity.BoardMatching;
-import com.bloom.pium.data.entity.Category;
-import com.bloom.pium.data.entity.UserInfo;
+import com.bloom.pium.data.entity.*;
 import com.bloom.pium.data.repository.BoardLikeRepository;
 import com.bloom.pium.data.repository.BoardRepository;
 import com.bloom.pium.data.repository.CategoryRepository;
 import com.bloom.pium.data.repository.UserInfoRepository;
 import com.bloom.pium.service.BoardService;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,37 +15,32 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-    // 안써서 일단 주석처리함 (2023.09.17.일)
-    // private final Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
 
     private BoardRepository boardRepository;
     private UserInfoRepository userInfoRepository;
     private BoardLikeRepository boardLikeRepository;
-    private final CategoryRepository categoryRepository; // 추가 (2023.09.17.일)
-
-
-    private static int size =10;
+    private final CategoryRepository categoryRepository;
+    private final static int size =10;
 
     @Autowired
     public BoardServiceImpl(BoardRepository boardRepository,
                             UserInfoRepository userInfoRepository,
                             BoardLikeRepository boardLikeRepository,
-                            CategoryRepository categoryRepository) { // 추가 (2023.09.17.일)
+                            CategoryRepository categoryRepository) {
         this.boardRepository = boardRepository;
         this.userInfoRepository = userInfoRepository;
         this.boardLikeRepository = boardLikeRepository;
-        this.categoryRepository = categoryRepository; // 추가 (2023.09.17.일)
+        this.categoryRepository = categoryRepository;
     }
 
     // 조회
-    // ↓↓ 수정 (2023.09.17.일)
     @Override
     public BoardResponseDto getBoard(Long boardId) {
         BoardMatching boardMatching = boardRepository.findById(boardId).orElse(null);
@@ -82,11 +72,10 @@ public class BoardServiceImpl implements BoardService {
             return null; // Handle the case where the board is not found
         }
     }
-    // ↑↑ 수정 (2023.09.17.일)
+
 
     @Override
     public BoardResponseDto saveBoard(BoardDto boardDto) {
-        // BoardDto에서 필요한 정보를 추출하여 BoardMatching 엔티티를 생성
         BoardMatching boardMatching = new BoardMatching();
         boardMatching.setTitle(boardDto.getTitle());
         boardMatching.setContent(boardDto.getContent());
@@ -94,6 +83,9 @@ public class BoardServiceImpl implements BoardService {
         boardMatching.setPlace(boardDto.getPlace());
         boardMatching.setViewCnt(0); // 초기값으로 0 설정
         boardMatching.setLikeCnt(0);
+        boardMatching.setCreatedDate(LocalDateTime.now());
+        boardMatching.setModifiedDate(LocalDateTime.now());
+        boardMatching.setCommentCount(0);
         // ↓↓ 추가 (2023.09.17.일)
         boardMatching.setCreatedDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
@@ -117,19 +109,31 @@ public class BoardServiceImpl implements BoardService {
         boardResponseDto.setBoardId(savedBoardMatching.getBoardId());
         boardResponseDto.setTitle(savedBoardMatching.getTitle());
         boardResponseDto.setContent(savedBoardMatching.getContent());
-        // ↓↓ 추가 (2023.09.17.일)
+
+
         boardResponseDto.setCreatedDate(LocalDateTime.now());
         String categoryName = boardMatching.getCategory() != null ? boardMatching.getCategory().getName() : null;
         boardResponseDto.setCategoryName(categoryName);
         String userName = boardMatching.getUserInfo() != null ? boardMatching.getUserInfo().getUsername() : null;
         boardResponseDto.setUsername(userName);
-        // ↑↑ 추가 (2023.09.17.일)
+
         return boardResponseDto;
     }
 
     @Override
     public BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception {
-        return null;
+        BoardMatching foundBoard = boardRepository.findById(boardId).get();
+        foundBoard.setTitle(title);
+        foundBoard.setContent(content);
+
+        BoardMatching changedBoard = boardRepository.save(foundBoard);
+
+        BoardResponseDto boardResponseDto = new BoardResponseDto();
+        boardResponseDto.setBoardId(changedBoard.getBoardId());
+        boardResponseDto.setTitle(changedBoard.getTitle());
+        boardResponseDto.setContent(changedBoard.getContent());
+
+        return boardResponseDto;
     }
 
     @Override
@@ -161,27 +165,29 @@ public class BoardServiceImpl implements BoardService {
 
     // Board 엔티티를 BoardResponseDto로 변환하는 메서드
     private BoardResponseDto convertToDto(BoardMatching board) {
-        BoardResponseDto boardResponseDto = new BoardResponseDto();
-        boardResponseDto.setBoardId(board.getBoardId());
-        boardResponseDto.setTitle(board.getTitle());
-        boardResponseDto.setContent(board.getContent());
-        boardResponseDto.setViewCnt(board.getViewCnt());
-        boardResponseDto.setLikeCnt(board.getLikeCnt());
-        boardResponseDto.setCreatedDate(board.getCreatedDate());
-        boardResponseDto.setModifiedDate(board.getModifiedDate());
-        int commentCount = board.getCommentCount();
-        boardResponseDto.setCommentCount(commentCount);
 
-        // Fetch the category name from the board's category
-        String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
-        boardResponseDto.setCategoryName(categoryName);
+            BoardResponseDto boardResponseDto = new BoardResponseDto();
+            boardResponseDto.setBoardId(board.getBoardId());
+            boardResponseDto.setTitle(board.getTitle());
+            boardResponseDto.setContent(board.getContent());
+            boardResponseDto.setViewCnt(board.getViewCnt());
+            boardResponseDto.setLikeCnt(board.getLikeCnt());
 
-        // Fetch the username from the associated UserInfo
-        UserInfo userInfo = board.getUserInfo();
-        if (userInfo != null) {
-            boardResponseDto.setUsername(userInfo.getUsername());
-        }
-        return boardResponseDto;
+            boardResponseDto.setCreatedDate(board.getCreatedDate());
+            boardResponseDto.setModifiedDate(board.getModifiedDate());
+            boardResponseDto.setCommentCount(board.getCommentCount());
+
+            // Fetch the category name from the board's category
+            String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
+            boardResponseDto.setCategoryName(categoryName);
+
+            // Fetch the username from the associated UserInfo
+            UserInfo userInfo = board.getUserInfo();
+            if (userInfo != null) {
+                boardResponseDto.setUsername(userInfo.getUsername());
+            }
+            return boardResponseDto;
+
     }
 
     // 좋아요
@@ -227,8 +233,7 @@ public class BoardServiceImpl implements BoardService {
             // ↓↓ 추가 (2023.09.17.일)
             boardResponseDto.setCreatedDate(boardMatching.getCreatedDate());
             boardResponseDto.setModifiedDate(boardMatching.getModifiedDate());
-            int commentCount = boardMatching.getCommentCount();
-            boardResponseDto.setCommentCount(commentCount);
+            boardResponseDto.setCommentCount(boardMatching.getCommentCount());
             // Fetch the category name from the board's category
             String categoryName = boardMatching.getCategory() != null ? boardMatching.getCategory().getName() : null;
             boardResponseDto.setCategoryName(categoryName);
@@ -245,8 +250,7 @@ public class BoardServiceImpl implements BoardService {
         return null;
     }
 
-    // ↓↓ 추가 (2023.09.17.일)
-    // 카테고리별로 게시글 불러오기
+
     @Override
     public List<BoardResponseDto> getBoardMatchingByCategory(Long categoryId) {
         // 카테고리를 조회합니다.
@@ -261,5 +265,42 @@ public class BoardServiceImpl implements BoardService {
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
-    // ↑↑ 추가 (2023.09.17.일)
+
+    @Override
+    public BoardResponseDto getBoardById(Long boardId) {
+        BoardMatching boardMatching = boardRepository.findById(boardId)
+                .orElseThrow(() -> new RuntimeException("Board not found with id: " + boardId));
+
+        // 여기에서 BoardMatching 엔티티를 BoardResponseDto로 변환하여 리턴하는 로직을 추가해야 합니다.
+        // BoardResponseDto에는 게시글의 상세 정보를 담아야 합니다.
+
+        return convertToDto(boardMatching);
+    }
+
+
+
+    @Override
+    public List<BoardMatching> getMainPage() {
+        return boardRepository.findTop10ByOrderByCreatedDateDesc(); // 최신 10개 게시물 가져오기
+    }
+
+    @Override
+    public List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword) {
+        // 카테고리 내에서 제목으로 검색 로직을 구현
+        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
+    }
+
+    @Override
+    public List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword) {
+        // 카테고리 내에서 유저 이름으로 검색 로직을 구현
+        return boardRepository.findByCategoryIdAndUserInfoNameContaining(categoryId, keyword);
+    }
+
+
+    @Override
+    public List<BoardMatching> getSearchResults(Long categoryId, String keyword) {
+        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
+    }
+
+
 }

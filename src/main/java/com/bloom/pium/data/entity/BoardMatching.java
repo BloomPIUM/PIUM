@@ -31,10 +31,10 @@ public class BoardMatching extends Board {
     @Column(nullable = false)
     private boolean participate;    // 참여 결정 여부
 
-
     @OneToMany(mappedBy = "boardMatching", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Column(unique = false)
     private List<BoardLike> boardLikes;
+
 
     @Column(nullable = true)
     private int viewCnt;
@@ -48,17 +48,14 @@ public class BoardMatching extends Board {
     @Column(unique = false)
     private List<Comment> comment;
 
-    // ↓↓ 추가 (2023.09.17.일)
-    public int getCommentCount() {
-        if (comment != null) {
-            return comment.size();
-        }
-        return 0;
-    }
+    @Column(nullable = true)
     private int commentCount;
 
     @ManyToOne
     @JoinColumn(name = "category_id") // 카테고리와 연결할 외래 키
     private Category category;
-    // ↑↑ 추가 (2023.09.17.일)
+
+    // 매칭 마감 관련 (미해결)
+    @Column(nullable = true)
+    private boolean deadline;
 }

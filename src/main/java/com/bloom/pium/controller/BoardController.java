@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -108,6 +109,14 @@ public class BoardController {
         System.out.println(board);
         return modelAndView;
     }
+
+    // 추가
+
+//    @PostMapping(value = "/myendpoint", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<String> handleJsonRequest(@RequestBody MyData data) {
+//        // JSON 데이터를 처리하는 로직
+//        return ResponseEntity.ok("JSON 데이터를 성공적으로 처리했습니다.");
+//    }
 
 }
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>보낸 쪽지함</title>
+</head>
+<body>
+<h1>보낸 쪽지함</h1>
+<table>
+  <thead>
+  <tr>
+    <th>제목</th>
+    <th>받는이</th>
+    <th>보낸시간</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- 보낸 쪽지 목록을 Thymeleaf 문법을 사용하여 표시 -->
+  <tr th:each="message : ${sentMessages}">
+    <td th:text="${message.messageTitle}"></td>
+    <td th:text="${message.senderUsername}"></td>
+    <td th:text="${message.createdDate}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>받은 쪽지함</title>
+</head>
+<body>
+<h1>받은 쪽지함</h1>
+<table>
+  <thead>
+  <tr>
+    <th>미 확인</th>
+    <td th:text="${receivedMessages[0].countUnRead}"></td>
+  </tr>
+  <tr>
+
+    <th>제목</th>
+    <th>보낸이</th>
+    <th>받은 시간</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Unread count -->
+
+
+  <!-- Received messages loop -->
+  <tr th:each="message : ${receivedMessages}">
+    <td><a th:href="@{/message/read/{messageId}(messageId=${message.messageId})}" th:text="${message.messageTitle}" ></a></td>
+    <td th:text="${message.senderUsername}"></td>
+    <td th:text="${message.createdDate}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+<style>
+  /* Remove underline from hyperlinks */
+  a {
+    text-decoration: none;
+    color: black;
+  }
+</style>
+</html>

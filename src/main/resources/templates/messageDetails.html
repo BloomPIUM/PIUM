@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Details</title>
+</head>
+<body>
+<h1>Message Details</h1>
+<table>
+
+  <tr>
+    <th>Title:</th>
+    <td th:text="${message.messageTitle}"></td>
+  </tr>
+  <tr>
+    <th>Content:</th>
+    <td th:text="${message.messageContent}"></td>
+  </tr>
+  <tr>
+    <th>Sender:</th>
+    <td th:text="${message.senderUsername}"></td>
+  </tr>
+  <!-- Add more details as needed -->
+</table>
+</body>
+</html>

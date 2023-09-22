@@ -17,6 +17,7 @@ public class BoardResponseDto extends Board {
     private int viewCnt;
 
     private boolean participate;
+
     private String categoryName;
     private String username;
     private int commentCount;

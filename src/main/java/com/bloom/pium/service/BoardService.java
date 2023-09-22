@@ -18,11 +18,16 @@ public interface BoardService {
     // 게시글 수정
     BoardResponseDto modifyBoard(Long boardId, String title, String content) throws Exception;
 
+
+
     //게시글 삭제
     void  deleteBoard(Long boardId) throws Exception;
 
+
+
     // 전체 게시글 가져오기 (페이징)
     Page<BoardResponseDto> getAllBoards(int page);
+
 
 
     // 게시판 좋아요(추천) 토글 메서드
@@ -34,16 +39,5 @@ public interface BoardService {
 
 
     BoardResponseDto getBoardById(Long boardId);
-
-
-    // 검색기능
-    List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword);
-
-    List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword);
-
-    List<BoardMatching> getSearchResults(Long categoryId, String keyword);
-
-    List<BoardMatching> getMainPage();
-
 
 }

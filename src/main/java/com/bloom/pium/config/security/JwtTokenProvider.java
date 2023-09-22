@@ -39,7 +39,7 @@ public class JwtTokenProvider {
     @PostConstruct
     protected void init(){
         key =  Base64.getEncoder().encodeToString(key.getBytes(StandardCharsets.UTF_8));
-     //secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+        //secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
     }
 
     public String createToken(String username, List<UserRoleEnum> roles){

@@ -19,10 +19,6 @@ public class UserInfoDto {
     private String gender;
     private List<UserRoleEnum> roles = new ArrayList<>();
 
-    public List<UserRoleEnum> getRoles() {
-        return roles;
-    }
-
 
 
 }

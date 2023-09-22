@@ -15,7 +15,7 @@ public class MatchingResponseDto {
     private String title;
     private String comment;
 
-    private boolean participate;
+//    private boolean participate;
 
     private UserInfo userId;
     private Board boardId;

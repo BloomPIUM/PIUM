@@ -4,14 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum UserRoleEnum {
-    USER("일반사용자"), ADMIN("관리자");
+    ROLE_USER("일반사용자"), ROLE_ADMIN("관리자");
 
     private final String roleName;
 
     UserRoleEnum(String roleName) {
         this.roleName = roleName;
-    }
-    public String getRoleName() {
-        return roleName;
     }
 }

@@ -5,6 +5,7 @@ import com.bloom.pium.data.dto.UserinfoResponseDto;
 import com.bloom.pium.service.UserInfoService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserInfoController {
     private UserInfoService userInfoService;
 
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserInfoController(UserInfoService userInfoService){
+    public UserInfoController(UserInfoService userInfoService, PasswordEncoder passwordEncoder){
+        this.passwordEncoder = passwordEncoder;
         this.userInfoService=userInfoService;
     }
 
@@ -46,6 +50,10 @@ public class UserInfoController {
         return "login"; // 로그인 페이지로 이동
     }
 
+    @GetMapping("/mainPage")
+    public String goToMain(){
+        return "mainPage";
+    }
     @PostMapping("/login")
     @ApiOperation(value = "로그인")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
@@ -55,12 +63,13 @@ public class UserInfoController {
         // 입력값과 데이터베이스에서 조회한 엔티티 비교
         if (username != null && checkUserDto.getUsername().equals(username)) {
             // 값이 일치하는 경우
+            if(password != null && passwordEncoder.matches(password,checkUserDto.getPassword())){
 
-            if (password != null && checkUserDto.getPassword().equals(password)) {
-                return "redirect:/board/write";
+                return "redirect:/user/mainPage";
             } else {
                 model.addAttribute("error", "비밀번호를 확인해주세요.");
             }
+
         }
 
         // 값이 불일치하는 경우

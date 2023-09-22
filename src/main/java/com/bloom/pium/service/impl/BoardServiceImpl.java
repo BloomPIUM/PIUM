@@ -2,7 +2,10 @@ package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
-import com.bloom.pium.data.entity.*;
+import com.bloom.pium.data.entity.BoardMatching;
+import com.bloom.pium.data.entity.BoardLike;
+import com.bloom.pium.data.entity.Category;
+import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.data.repository.BoardLikeRepository;
 import com.bloom.pium.data.repository.BoardRepository;
 import com.bloom.pium.data.repository.CategoryRepository;
@@ -18,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -266,6 +270,7 @@ public class BoardServiceImpl implements BoardService {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public BoardResponseDto getBoardById(Long boardId) {
         BoardMatching boardMatching = boardRepository.findById(boardId)
@@ -275,31 +280,6 @@ public class BoardServiceImpl implements BoardService {
         // BoardResponseDto에는 게시글의 상세 정보를 담아야 합니다.
 
         return convertToDto(boardMatching);
-    }
-
-
-
-    @Override
-    public List<BoardMatching> getMainPage() {
-        return boardRepository.findTop10ByOrderByCreatedDateDesc(); // 최신 10개 게시물 가져오기
-    }
-
-    @Override
-    public List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword) {
-        // 카테고리 내에서 제목으로 검색 로직을 구현
-        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
-    }
-
-    @Override
-    public List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword) {
-        // 카테고리 내에서 유저 이름으로 검색 로직을 구현
-        return boardRepository.findByCategoryIdAndUserInfoNameContaining(categoryId, keyword);
-    }
-
-
-    @Override
-    public List<BoardMatching> getSearchResults(Long categoryId, String keyword) {
-        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
     }
 
 

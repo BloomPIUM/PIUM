@@ -46,6 +46,7 @@ public class UserInfo implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     private List<UserRoleEnum> roles = new ArrayList<>(); // 권한
 
 

@@ -13,8 +13,7 @@ public interface MessageService {
     // 유저 한명이 받은 메세지 전체 불러오기
     List<MessageDto> getMessageByUsername(String username);
 
-//    // 쪽지 내용 확인(상세보기) -> 읽음에 따른 상태값 변경 -> 주고 받은 내용?
-//    MessageDto getMessageById(Long messageId);
+    MessageDto readMessageDetail(Long messageId);
 
     // 메세지 읽음에 따른 상태값 변경
     MessageDto readMessageStatus(Long messageId);

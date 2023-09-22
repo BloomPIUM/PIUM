@@ -17,7 +17,9 @@
   <tbody>
   <!-- 보낸 쪽지 목록을 Thymeleaf 문법을 사용하여 표시 -->
   <tr th:each="message : ${sentMessages}">
-    <td th:text="${message.messageTitle}"></td>
+<!--    <td th:text="${message.messageTitle}"></td>-->
+    <td><a th:href="@{/message/selete/{messageId}(messageId=${message.messageId})}" th:text="${message.messageTitle}" ></a></td>
+
     <td th:text="${message.senderUsername}"></td>
     <td th:text="${message.createdDate}"></td>
   </tr>

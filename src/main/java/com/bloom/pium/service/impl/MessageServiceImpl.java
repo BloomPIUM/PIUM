@@ -129,6 +129,27 @@ public class MessageServiceImpl implements MessageService {
     }
 
     //
+    @Override
+    public MessageDto readMessageDetail(Long messageId) {
+        messageRepository.findById(messageId).orElseThrow(RuntimeException::new);
+
+        Message message = messageRepository.findById(messageId).get();
+
+
+        // 반환용 builder 패턴
+        MessageDto messageSave = MessageDto.builder()
+                .messageTitle(message.getMessageTitle())
+                .messageContent(message.getContent())
+                .receiveId(message.getRecipient().getUserId())
+                .sendId(message.getSender().getUserId())
+                .senderUsername(message.getSender().getUsername())
+                .receiverUsername(message.getRecipient().getUsername())
+                .checkStatus(message.isCheckStatus())
+                .build();
+
+        return messageSave;
+
+    }
 
 
     // 받은 쪽지함 통합 버전 수정 getMessageByUsername

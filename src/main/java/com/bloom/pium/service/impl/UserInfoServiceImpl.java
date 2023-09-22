@@ -46,6 +46,11 @@ public class UserInfoServiceImpl  implements UserInfoService {
         return userInfoDto;
     }
 
+    //유저정보 조회
+    public UserInfo getUserInfoByUsername(String username) {
+        return userInfoRepository.findByUsername(username);
+    }
+
     @Override
     public UserinfoResponseDto findUsername(String username) {
         UserInfo findUser = userInfoRepository.findByUsername(username);

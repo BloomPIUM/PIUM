@@ -147,5 +147,18 @@ public class BoardController {
         // boardList.html 뷰로 이동
         return new ModelAndView("boardList");
     }
+
+//    @GetMapping("/user/{username}")
+//    public List<BoardMatching> getPostsByUsername(@PathVariable String username) {
+//        return BoardService.getPostsByUsername(username);
+//    }
+
+    //작성한 게시글 조회 (제목 , 작성자)
+    @GetMapping("/{userId}/boardMatchingList")
+    public String getBoardMatchingList(@PathVariable Long userId, Model model) {
+        List<BoardMatching> boardMatchingList = boardService.getBoardMatchingListByUserId(userId);
+        model.addAttribute("boardMatchingList", boardMatchingList);
+        return "boardmatchinglist"; // board_matching_list.html 템플릿을 사용하여 리스트를 보여줌
+    }
 }
 

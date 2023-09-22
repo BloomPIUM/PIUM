@@ -1,0 +1,89 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>작성된 게시글 리스트</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>작성된 게시글 리스트</h1>-->
+<!--<ul>-->
+<!--    <th:block th:each="boardMatching : ${userId}">-->
+<!--        <li th:text="${userId}"></li>-->
+<!--    </th:block>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>User Boards</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>User Boards</h1>-->
+
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Schedule</th>-->
+<!--        <th>Place</th>-->
+<!--        <th>Like Count</th>-->
+<!--        <th>View Count</th>-->
+<!--        <th>Category</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="board : ${userId}">-->
+<!--        <td th:text="${boardMatchingList}">Board Title</td>-->
+<!--        <td th:text="${userId.board.schedule}">Schedule</td>-->
+<!--        <td th:text="${board.place}">Place</td>-->
+<!--        <td th:text="${board.likeCnt}">0</td>-->
+<!--        <td th:text="${board.viewCnt}">0</td>-->
+<!--        <td th:text="${board.category.name}">Category</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<a href="/">Back to Home</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+</head>
+<body>
+<h1>게시글 목록</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+<!--        <th>조회수</th>-->
+<!--        <th>좋아요 수</th>-->
+<!--        <th>댓글 수</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf 반복문을 사용하여 게시글 목록을 표시합니다 -->
+    <tr th:each="boardMatching : ${boardMatchingList}">
+        <td th:text="${boardMatching.title}"></td>
+        <td th:text="${boardMatching.userInfo.username}"></td>
+<!--        <td th:text="${boardMatching.viewCnt}"></td>-->
+<!--        <td th:text="${boardMatching.likeCnt}"></td>-->
+<!--        <td th:text="${boardMatching.commentCount}"></td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

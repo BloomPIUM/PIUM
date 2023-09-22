@@ -2,6 +2,7 @@ package com.bloom.pium.controller;
 
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
+import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.service.UserInfoService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,4 +79,17 @@ public class UserInfoController {
 
     }
 
+
+//    @GetMapping("/user/{username}")
+//    public UserInfo getUserInfoByUsername(@PathVariable String username) {
+//        return userInfoService.getUserInfoByUsername(username);
+//    }
+
+    //유저 정보 조회
+    @GetMapping("/{username}")
+    public String getUserInfoPage(@PathVariable String username, Model model) {
+        UserInfo userInfo = userInfoService.getUserInfoByUsername(username);
+        model.addAttribute("userInfo", userInfo);
+        return "userinfo"; // 템플릿 파일의 이름 (user_info.html)
+    }
 }

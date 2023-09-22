@@ -23,4 +23,6 @@ public interface BoardRepository extends JpaRepository<BoardMatching,Long> {
 
     List<BoardMatching> findByCategoryIdAndTitleContaining(Long categoryId, String keyword);
 
+    //작성한 게시글 조회
+    List<BoardMatching> findByUserInfoUserId(Long userId);
 }

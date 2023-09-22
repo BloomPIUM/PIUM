@@ -6,24 +6,65 @@
 
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 300px; /* 컨테이너의 최대 폭을 조정합니다. */
+            width: 90%; /* 화면 너비의 90%만큼 너비를 설정합니다. */
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            font-size: 14px;
+        }
+
+        .form-control {
+            font-size: 14px;
+            max-width: 200px; /* 입력 창의 최대 폭을 조정합니다. */
+            margin: 0 auto; /* 입력 창을 가운데 정렬합니다. */
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h2>Login</h2>
     <form th:action="@{/user/login}" method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">아이디:</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">비밀번호:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <a href="/user" class="btn btn-success">회원가입</a>
-            </div>
-        </form>
+        <div class="mb-3">
+            <label for="username" class="form-label">아이디:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">비밀번호:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="/user" class="btn btn-success">회원가입</a>
+        </div>
+    </form>
 </div>
 
 <!-- Include Bootstrap JS and jQuery -->

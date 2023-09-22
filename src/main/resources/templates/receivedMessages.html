@@ -70,6 +70,8 @@
 <div class="container">
   <!-- 페이지 제목 -->
   <h1>📬 받은 쪽지함</h1>
+  <!-- 뒤로가기 버튼 -->
+  <button onclick="goBack()" style="margin: 10px;">뒤로가기</button>
   <!-- 쪽지 리스트 -->
   <table>
     <!-- 테이블 헤더 -->
@@ -94,5 +96,12 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
 </body>
 </html>

@@ -71,7 +71,7 @@ public class MessageController {
     }
 
     // 상세 메세지
-    @GetMapping("/selete/{messageId}")
+    @GetMapping("/selecte/{messageId}")
     public String seleteMessage(@PathVariable Long messageId, Model model) {
         MessageDto message = messageService.readMessageDetail(messageId);
         model.addAttribute("message", message);

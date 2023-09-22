@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Setter
 @MappedSuperclass
 public class Board extends BaseEntity{
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long boardId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long boardId;
 
     @Column(nullable = false)
     private String title;

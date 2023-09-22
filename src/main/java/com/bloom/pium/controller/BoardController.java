@@ -3,6 +3,7 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.dto.CommentResponseDto;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.service.BoardService;
 import com.bloom.pium.service.CategoryService;
 import com.bloom.pium.service.CommentService;
@@ -16,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.bloom.pium.data.dto.ModifyBoardDto;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -107,6 +110,41 @@ public class BoardController {
         model.addAttribute("comments", comments);
         System.out.println(board);
         return modelAndView;
+    }
+
+    @GetMapping("/mainPage")
+    public String showMainPage(Model model) {
+        List<BoardMatching> mainPage = boardService.getMainPage();
+        model.addAttribute("mainPage", mainPage); // mainPage를 모델에 추가
+        return "mainPage"; // mainPage.html로 이동
+    }
+
+    @GetMapping("/searchResults")
+    public String showSearchResults(@RequestParam Long categoryId,
+                                    @RequestParam String keyword, Model model) {
+
+        List<BoardMatching> searchResults = boardService.getSearchResults(categoryId, keyword);
+        model.addAttribute("searchResults", searchResults);
+        return "searchResults"; // searchResults.html로 이동
+    }
+    @GetMapping("/searchTitle")
+    public String search(@RequestParam String searchType,
+                         @RequestParam String keyword,
+                         @RequestParam Long categoryId,
+                         Model model) {
+        List<BoardMatching> searchResults;
+
+        if ("title".equals(searchType)) {
+            searchResults = boardService.searchByTitleAndCategory(categoryId, keyword);
+        } else if ("name".equals(searchType)) {
+            searchResults = boardService.searchByUserInfoNameAndCategory(categoryId, keyword);
+        } else {
+            // 다른 검색 유형에 대한 처리 추가
+            searchResults = Collections.emptyList();
+        }
+
+        model.addAttribute("searchResults", searchResults); // 검색 결과를 모델에 추가
+        return "searchResults"; // searchResults.html로 이동
     }
 
 }

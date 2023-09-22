@@ -40,4 +40,12 @@ public interface BoardService {
 
     BoardResponseDto getBoardById(Long boardId);
 
+    // 검색기능
+    List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword);
+
+    List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword);
+
+    List<BoardMatching> getSearchResults(Long categoryId, String keyword);
+
+    List<BoardMatching> getMainPage();
 }

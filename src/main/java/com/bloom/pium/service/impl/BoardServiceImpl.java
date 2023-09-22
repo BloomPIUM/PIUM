@@ -282,5 +282,28 @@ public class BoardServiceImpl implements BoardService {
         return convertToDto(boardMatching);
     }
 
+    @Override
+    public List<BoardMatching> getMainPage() {
+        return boardRepository.findTop10ByOrderByCreatedDateDesc(); // 최신 10개 게시물 가져오기
+    }
+
+    @Override
+    public List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword) {
+        // 카테고리 내에서 제목으로 검색 로직을 구현
+        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
+    }
+
+    @Override
+    public List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword) {
+        // 카테고리 내에서 유저 이름으로 검색 로직을 구현
+        return boardRepository.findByCategoryIdAndUserInfoNameContaining(categoryId, keyword);
+    }
+
+
+    @Override
+    public List<BoardMatching> getSearchResults(Long categoryId, String keyword) {
+        return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
+    }
+
 
 }

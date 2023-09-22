@@ -52,6 +52,9 @@ public class BoardMatching extends Board {
     @JoinColumn(name = "category_id") // 카테고리와 연결할 외래 키
     private Category category;
 
+    @Column(nullable = false)
+    private boolean participate;    // 참여 결정 여부
+
     // 매칭 마감 관련 (미해결)
     @Column(nullable = true)
     private boolean deadline;

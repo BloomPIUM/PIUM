@@ -185,14 +185,22 @@
             </div>
 
             <div class="search_box">
-                <form id="searchForm" onsubmit="return false;" autocomplete="off">
+                <form id="searchForm" action="/board/searchTitle" method="GET" autocomplete="off">
                     <div class="sch_group fl">
-                        <select title="검색 유형 선택">
-                            <option value="">제목</option>
-                            <option value="">유저</option>
+                        <select id="searchType" name="searchType" title="검색 유형 선택">
+                            <option value="title">제목</option>
+                            <option value="name">유저</option>
                         </select>
-                        <input type="text" placeholder="검색어를 입력하세요." title="키워드 입력"/>
-                        <button type="button" class="bt_search"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
+                        <input type="text" id="searchKeyword" name="keyword" placeholder="검색어를 입력하세요." title="키워드 입력"/>
+                        <input type="hidden" name="categoryId" value="1" />
+                        <input type="hidden" name="categoryId" value="2" />
+                        <input type="hidden" name="categoryId" value="3" />
+                        <input type="hidden" name="categoryId" value="4" />
+                        <input type="hidden" name="categoryId" value="5" />
+                        <input type="hidden" name="categoryId" value="6" />
+                        <input type="hidden" name="categoryId" value="7" />
+
+                        <button type="submit" class="bt_search"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
                     </div>
                 </form>
             </div>

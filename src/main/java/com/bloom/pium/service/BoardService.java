@@ -31,7 +31,9 @@ public interface BoardService {
     List<BoardMatching> getMainPage();
     // 게시글 전체를 번호 역순으로 가져오기 (수정 2023.09.22.금)
     List<BoardResponseDto> getAllBoard();
-    public List<BoardMatching> getBoardMatchingListByUserId(Long userId) ;
-        // userId를 이용하여 해당 사용자의 작성글을 조회
 
+    //
+    List<BoardResponseDto> getBoardsByUserId(Long userId);
+
+    List<BoardResponseDto> getBoardsByUserIdOrderByBoardIdDesc(Long userId);
 }

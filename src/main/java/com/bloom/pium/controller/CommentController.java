@@ -50,9 +50,10 @@ public class CommentController {
 
     @GetMapping("/byUser/{userId}")
     @ApiOperation(value = "유저ID로 댓글 불러오기")
-    public ResponseEntity<List<CommentResponseDto>> getCommentsByUserId(@PathVariable Long userId) {
+    public String getMyComments(@PathVariable Long userId, Model model) {
         List<CommentResponseDto> comments = commentService.getCommentsByUserId(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(comments);
+        model.addAttribute("mycomment", comments);
+        return "mycomment"; // mycomment.html로 이동
     }
     // ↑↑ 추가 (2023.09.16.토)
 }

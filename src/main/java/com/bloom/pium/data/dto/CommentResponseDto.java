@@ -26,6 +26,7 @@ public class CommentResponseDto {
 
     private LocalDateTime ModifiedDate;
 
+    private String title;
 
 
 }

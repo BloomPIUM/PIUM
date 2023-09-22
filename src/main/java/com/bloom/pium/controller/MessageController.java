@@ -61,9 +61,7 @@ public class MessageController {
     }
 
 
-
-
-    // 상세 메세지
+    // 상세 메세지 - 알림 포함
     @GetMapping("/read/{messageId}")
     public String readMessage(@PathVariable Long messageId, Model model) {
         MessageDto message = messageService.readMessageStatus(messageId);

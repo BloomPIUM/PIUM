@@ -1,7 +1,6 @@
 package com.bloom.pium.service.impl;
 
 import com.bloom.pium.config.security.JwtTokenProvider;
-import com.bloom.pium.config.security.SecurityConfig;
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
 import com.bloom.pium.data.entity.UserInfo;
@@ -10,11 +9,8 @@ import com.bloom.pium.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
-
 import static com.bloom.pium.data.UserRoleEnum.ROLE_USER;
-
 
 @Service
 public class UserInfoServiceImpl  implements UserInfoService {
@@ -47,9 +43,7 @@ public class UserInfoServiceImpl  implements UserInfoService {
         user.setStatus("일반");
         user.setRoles(userInfoDto.getRoles());
         user.setRoles(Collections.singletonList(ROLE_USER)); // 리스트로 해서 사용자0, 관리자1인 리스트 인덱스 값 저장
-
         userInfoRepository.save(user);
-
         return userInfoDto;
     }
 
@@ -62,8 +56,7 @@ public class UserInfoServiceImpl  implements UserInfoService {
         user.setRoles(findUser.getRoles());
         user.setToken(jwtTokenProvider.createToken(user.getUsername(), user.getRoles()));
         return user;
-
-
     }
-
 }
+
+

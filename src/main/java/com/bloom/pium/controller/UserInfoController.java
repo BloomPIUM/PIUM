@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("user")
 public class UserInfoController {
     private UserInfoService userInfoService;
-
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -49,7 +48,6 @@ public class UserInfoController {
     public String loginPage() {
         return "login"; // 로그인 페이지로 이동
     }
-
     @GetMapping("/mainPage")
     public String goToMain(){
         return "mainPage";
@@ -69,7 +67,6 @@ public class UserInfoController {
             } else {
                 model.addAttribute("error", "비밀번호를 확인해주세요.");
             }
-
         }
 
         // 값이 불일치하는 경우

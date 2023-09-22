@@ -16,12 +16,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -269,7 +267,6 @@ public class BoardServiceImpl implements BoardService {
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
-
 
     @Override
     public BoardResponseDto getBoardById(Long boardId) {

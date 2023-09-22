@@ -47,9 +47,6 @@ public class BoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-
-
-
     @PostMapping("/write")
     @ApiOperation(value = "게시글 작성")
     public  ResponseEntity<BoardResponseDto> createdBoard(@RequestBody BoardDto boardDto){
@@ -57,7 +54,6 @@ public class BoardController {
         System.out.println(boardResponseDto);
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
-
 
     @PutMapping("/modify")
     public ResponseEntity<BoardResponseDto> modifyBoard(
@@ -70,7 +66,6 @@ public class BoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-
     @DeleteMapping("/delete")
     @ApiOperation(value = "게시글 삭제")
     public ResponseEntity <String> deleteBoard (Long boardId) throws Exception{
@@ -78,7 +73,6 @@ public class BoardController {
 
         return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다");
     }
-
 
     @GetMapping("/paging")
     @ApiOperation(value = "페이징")
@@ -97,8 +91,6 @@ public class BoardController {
         BoardResponseDto updatedBoard = boardService.toggleLike(boardId, userId);
         return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
     }
-
-
 
     @GetMapping("/{boardId}")
     @ApiOperation(value = "n번 게시글 내용 + 댓글")
@@ -146,6 +138,5 @@ public class BoardController {
         model.addAttribute("searchResults", searchResults); // 검색 결과를 모델에 추가
         return "searchResults"; // searchResults.html로 이동
     }
-
 }
 

@@ -18,7 +18,4 @@ public class UserInfoDto {
     private String phone;
     private String gender;
     private List<UserRoleEnum> roles = new ArrayList<>();
-
-
-
 }

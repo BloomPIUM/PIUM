@@ -6,10 +6,7 @@ import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.entity.BoardLike;
 import com.bloom.pium.data.entity.Category;
 import com.bloom.pium.data.entity.UserInfo;
-import com.bloom.pium.data.repository.BoardLikeRepository;
-import com.bloom.pium.data.repository.BoardRepository;
-import com.bloom.pium.data.repository.CategoryRepository;
-import com.bloom.pium.data.repository.UserInfoRepository;
+import com.bloom.pium.data.repository.*;
 import com.bloom.pium.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +25,7 @@ import java.util.stream.Collectors;
 public class BoardServiceImpl implements BoardService {
 
     private BoardRepository boardRepository;
+
     private UserInfoRepository userInfoRepository;
     private BoardLikeRepository boardLikeRepository;
     private final CategoryRepository categoryRepository;
@@ -282,5 +280,20 @@ public class BoardServiceImpl implements BoardService {
         return convertToDto(boardMatching);
     }
 
+//    @Override
+//    public List<BoardMatching> getPostsByUsername(String username) {
+//        return null;
+//    }
 
+
+//    public List<BoardMatching> getPostsByUsername(Long userId) {
+//            boardRepository.findBy
+//        return null;
+//    }
+
+    //작성한 게시글 조회
+    public List<BoardMatching> getBoardMatchingListByUserId(Long userId) {
+        // userId를 이용하여 해당 사용자의 작성글을 조회
+        return boardRepository.findByUserInfoUserId(userId);
+    }
 }

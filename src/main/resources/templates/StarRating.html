@@ -1,0 +1,169 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>별점 작성</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>별점 작성 페이지</h1>-->
+
+<!--&lt;!&ndash; 평가 폼 &ndash;&gt;-->
+<!--<form action="/ratings/write" method="post" th:object="${ratingDto}">-->
+<!--    <label for="username">평가 대상 유저:</label>-->
+<!--    <input type="text" id="username" name="username" th:field="*{username}" required>-->
+
+<!--    <label for="ratedUsername">별점 주는 유저:</label>-->
+<!--    <input type="text" id="ratedUsername" name="ratedUsername" th:field="*{ratedUsername}" required>-->
+
+<!--    <label for="content">후기 내용:</label>-->
+<!--    <textarea id="content" name="content" th:field="*{content}" required></textarea>-->
+
+<!--    <label for="rating">별점:</label>-->
+<!--    <input type="number" id="rating" name="rating" th:field="*{rating}" min="1" max="5" required>-->
+
+<!--    <button type="submit">별점 작성</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>별점 평가</title>-->
+<!--    <style>-->
+<!--        .rating {-->
+<!--            font-size: 24px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .star {-->
+<!--            color: #ccc;-->
+<!--        }-->
+
+<!--        .star.active {-->
+<!--            color: gold;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="rating">-->
+<!--    <span class="star" data-rating="1">★</span>-->
+<!--    <span class="star" data-rating="2">★</span>-->
+<!--    <span class="star" data-rating="3">★</span>-->
+<!--    <span class="star" data-rating="4">★</span>-->
+<!--    <span class="star" data-rating="5">★</span>-->
+<!--</div>-->
+<!--<input type="hidden" name="rating" id="rating" value="0">-->
+
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--        const stars = document.querySelectorAll(".star");-->
+<!--        const ratingInput = document.getElementById("rating");-->
+
+<!--        stars.forEach((star) => {-->
+<!--            star.addEventListener("click", function () {-->
+<!--                const rating = parseInt(star.getAttribute("data-rating"));-->
+<!--                ratingInput.value = rating;-->
+<!--                updateStars(rating);-->
+<!--            });-->
+
+<!--            star.addEventListener("mouseover", function () {-->
+<!--                const rating = parseInt(star.getAttribute("data-rating"));-->
+<!--                updateStars(rating);-->
+<!--            });-->
+
+<!--            star.addEventListener("mouseout", function () {-->
+<!--                const rating = parseInt(ratingInput.value);-->
+<!--                updateStars(rating);-->
+<!--            });-->
+<!--        });-->
+
+<!--        function updateStars(rating) {-->
+<!--            stars.forEach((star) => {-->
+<!--                const starRating = parseInt(star.getAttribute("data-rating"));-->
+<!--                if (starRating <= rating) {-->
+<!--                    star.classList.add("active");-->
+<!--                } else {-->
+<!--                    star.classList.remove("active");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별점 평가</title>
+    <style>
+        .rating {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .star {
+            color: #ccc;
+        }
+
+        .star.active {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/ratings/write}" method="post" th:object="${ratingDto}">
+    <div class="rating">
+        <span class="star" data-rating="1">★</span>
+        <span class="star" data-rating="2">★</span>
+        <span class="star" data-rating="3">★</span>
+        <span class="star" data-rating="4">★</span>
+        <span class="star" data-rating="5">★</span>
+    </div>
+    <input type="hidden" th:field="*{rating}" name="rating" id="rating" value="0">
+    <button type="submit">평가하기</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll(".star");
+        const ratingInput = document.getElementById("rating");
+
+        stars.forEach((star) => {
+            star.addEventListener("click", function () {
+                const rating = parseInt(star.getAttribute("data-rating"));
+                ratingInput.value = rating;
+                updateStars(rating);
+            });
+
+            star.addEventListener("mouseover", function () {
+                const rating = parseInt(star.getAttribute("data-rating"));
+                updateStars(rating);
+            });
+
+            star.addEventListener("mouseout", function () {
+                const rating = parseInt(ratingInput.value);
+                updateStars(rating);
+            });
+        });
+
+        function updateStars(rating) {
+            stars.forEach((star) => {
+                const starRating = parseInt(star.getAttribute("data-rating"));
+                if (starRating <= rating) {
+                    star.classList.add("active");
+                } else {
+                    star.classList.remove("active");
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

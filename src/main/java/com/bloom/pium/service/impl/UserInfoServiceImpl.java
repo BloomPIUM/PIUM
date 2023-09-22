@@ -1,7 +1,6 @@
 package com.bloom.pium.service.impl;
 
 import com.bloom.pium.config.security.JwtTokenProvider;
-import com.bloom.pium.config.security.SecurityConfig;
 import com.bloom.pium.data.dto.UserInfoDto;
 import com.bloom.pium.data.dto.UserinfoResponseDto;
 import com.bloom.pium.data.entity.UserInfo;
@@ -51,6 +50,11 @@ public class UserInfoServiceImpl  implements UserInfoService {
         userInfoRepository.save(user);
 
         return userInfoDto;
+    }
+
+    //유저정보 조회
+    public UserInfo getUserInfoByUsername(String username) {
+        return userInfoRepository.findByUsername(username);
     }
 
     @Override

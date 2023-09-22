@@ -40,4 +40,11 @@ public interface BoardService {
 
     BoardResponseDto getBoardById(Long boardId);
 
+
+
+
+
+    public List<BoardMatching> getBoardMatchingListByUserId(Long userId) ;
+        // userId를 이용하여 해당 사용자의 작성글을 조회
+
 }

@@ -1,6 +1,7 @@
 package com.bloom.pium.data.repository;
 
 
+import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.data.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface BoardRepository extends JpaRepository<BoardMatching,Long> {
     List<BoardMatching> findByCategory(Category category);
 
 
+    //작성한 게시글 조회
+    List<BoardMatching> findByUserInfoUserId(Long userId);
 }

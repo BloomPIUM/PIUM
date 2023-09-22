@@ -3,6 +3,8 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.dto.CommentResponseDto;
+import com.bloom.pium.data.entity.Board;
+import com.bloom.pium.data.entity.BoardMatching;
 import com.bloom.pium.service.BoardService;
 import com.bloom.pium.service.CategoryService;
 import com.bloom.pium.service.CommentService;
@@ -107,6 +109,20 @@ public class BoardController {
         model.addAttribute("comments", comments);
         System.out.println(board);
         return modelAndView;
+    }
+
+
+//    @GetMapping("/user/{username}")
+//    public List<BoardMatching> getPostsByUsername(@PathVariable String username) {
+//        return BoardService.getPostsByUsername(username);
+//    }
+
+    //작성한 게시글 조회 (제목 , 작성자)
+    @GetMapping("/{userId}/boardMatchingList")
+    public String getBoardMatchingList(@PathVariable Long userId, Model model) {
+        List<BoardMatching> boardMatchingList = boardService.getBoardMatchingListByUserId(userId);
+        model.addAttribute("boardMatchingList", boardMatchingList);
+        return "boardmatchinglist"; // board_matching_list.html 템플릿을 사용하여 리스트를 보여줌
     }
 
 }

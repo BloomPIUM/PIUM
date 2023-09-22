@@ -10,13 +10,9 @@ import lombok.*;
 @ToString
 @Builder
 public class MatchingResponseDto {
-
     private Long matchingId;
     private String title;
     private String comment;
-    private boolean participate;
     private UserInfo userId;
     private Board boardId;
-
-
 }

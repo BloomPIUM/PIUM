@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.time.temporal.ChronoUnit;
@@ -151,17 +152,17 @@ public class BoardServiceImpl implements BoardService {
             throw new Exception();
         }
     }
-
-    // 게시글 전체 불러오기
+    // 게시글 전체 불러오기 (수정 2023.09.22.금)
+    // 역순으로 수정함
     @Override
     public Page<BoardResponseDto> getAllBoards(int page) {
-        // 페이지와 페이지 크기를 기반으로 페이징 요청
-        Pageable pageable = PageRequest.of(page-1, size); // 1페이지부터 시작
+        // 페이지네이션을 설정하고, boardId를 내림차순(역순)으로 정렬합니다.
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.DESC, "boardId"));
 
-        // 게시물을 페이징하여 가져옴
+        // 게시글을 검색하고 역순으로 정렬합니다.
         Page<BoardMatching> boardPage = boardRepository.findAll(pageable);
 
-        // Board엔티티를 BoardResponseDto로 변환하여 반환
+        // 엔티티를 DTO로 변환하고 페이지를 반환합니다.
         return boardPage.map(this::convertToDto);
     }
 
@@ -278,29 +279,34 @@ public class BoardServiceImpl implements BoardService {
 
         return convertToDto(boardMatching);
     }
-
     @Override
     public List<BoardMatching> getMainPage() {
         return boardRepository.findTop10ByOrderByCreatedDateDesc(); // 최신 10개 게시물 가져오기
     }
-
     @Override
     public List<BoardMatching> searchByTitleAndCategory(Long categoryId, String keyword) {
         // 카테고리 내에서 제목으로 검색 로직을 구현
         return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
     }
-
     @Override
     public List<BoardMatching> searchByUserInfoNameAndCategory(Long categoryId, String keyword) {
         // 카테고리 내에서 유저 이름으로 검색 로직을 구현
         return boardRepository.findByCategoryIdAndUserInfoNameContaining(categoryId, keyword);
     }
-
-
     @Override
     public List<BoardMatching> getSearchResults(Long categoryId, String keyword) {
         return boardRepository.findByCategoryIdAndTitleContaining(categoryId, keyword);
     }
+    // 추가 (2023.09.22.금)
+    // 역순으로 게시글 불러오기
+    @Override
+    public List<BoardResponseDto> getAllBoard() {
+        // 페이지네이션 없이 모든 게시글을 검색하고 boardId를 내림차순(역순)으로 정렬합니다.
+        List<BoardMatching> boardList = boardRepository.findAll(Sort.by(Sort.Direction.DESC, "boardId"));
 
-
+        // 엔티티를 DTO로 변환하고 리스트를 반환합니다.
+        return boardList.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
 }

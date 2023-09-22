@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# 정재님 코드 POST 안됩니다.
+
+
+>>>>>>> origin/mainPage.html+boardList.html+boardDetail.html
 
 # PIUM
 

@@ -44,7 +44,12 @@ public class CommentServiceImpl implements CommentService {
             comment.setUserInfo(userInfoRepository.findById(commentDto.getUserId()).get());
             comment.setCreatedDate(LocalDateTime.now());
             comment.setModifiedDate(LocalDateTime.now());
-
+            // ↓↓ 추가, 댓글 카운트 (2023.09.22.금)
+            BoardMatching boardMatching = boardRepository.findById(commentDto.getBoardId())
+                    .orElseThrow(() -> new RuntimeException("BoardMatching not found with id: " + commentDto.getBoardId()));
+            boardMatching.setCommentCount(boardMatching.getCommentCount() + 1);
+            boardRepository.save(boardMatching);
+            // ↑↑ 추가, 댓글 카운트 (2023.09.22.금)
             commentRepository.save(comment);
         } else {
 

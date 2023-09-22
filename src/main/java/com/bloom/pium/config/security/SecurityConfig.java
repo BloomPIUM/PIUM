@@ -44,6 +44,7 @@ public class SecurityConfig {
         http
                 .httpBasic().disable()
                 .csrf().disable()
+                //CORS 설정
                 .cors(c -> {
                             CorsConfigurationSource source = request -> {
                                 // Cors 허용 패턴
@@ -101,3 +102,4 @@ public class SecurityConfig {
         return http.build();
     }
 }
+

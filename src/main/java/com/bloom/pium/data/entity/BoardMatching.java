@@ -28,13 +28,9 @@ public class BoardMatching extends Board {
     @Column(nullable = true)
     private int likeCnt;
 
-    @Column(nullable = false)
-    private boolean participate;    // 참여 결정 여부
-
     @OneToMany(mappedBy = "boardMatching", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Column(unique = false)
     private List<BoardLike> boardLikes;
-
 
     @Column(nullable = true)
     private int viewCnt;

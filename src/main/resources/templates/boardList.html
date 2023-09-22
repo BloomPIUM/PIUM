@@ -13,6 +13,7 @@
             align-items: center;
             margin: 0px 10px 0px 200px;
         }
+
         .header-buttons a {
             text-decoration: none;
             padding: 5px 10px;
@@ -69,6 +70,8 @@
             padding: 0;
             border: none;
         }
+
+        /* Basic styling */
         body {
             font-family: Arial, sans-serif;
         }
@@ -228,54 +231,55 @@
                 </form>
             </div>
             <div class="post-content">
-            <table class="tb tb_col">
-                <colgroup>
-                    <col style="width:70px;"/>
-                    <col style="width:90px;"/>
-                    <col style="width:auto;"/>
-                    <col style="width:150px;"/>
-                    <col style="width:80px;"/>
-                    <col style="width:80px;"/>
-                    <col style="width:170px;"/>
-                </colgroup>
+                <table class="tb tb_col">
+                    <colgroup>
+                        <col style="width:70px;"/>
+                        <col style="width:90px;"/>
+                        <col style="width:auto;"/>
+                        <col style="width:150px;"/>
+                        <col style="width:80px;"/>
+                        <col style="width:80px;"/>
+                        <col style="width:170px;"/>
+                    </colgroup>
 
-                <thead style="border: #000000">
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">매칭</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">추천</th>
-                    <th scope="col">댓글수</th>
-                    <th scope="col">등록일</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <tr th:if="${not #lists.isEmpty( boards )}" th:each="board : ${boards}">
-                    <td class="tr-td-boardId">
-                        <a th:href="@{'/board/' + ${board.boardId}}" th:text="${board.boardId}"></a>
-                    </td>
-                    <td th:text="${board.participate == false ? '매칭중' : (board.participate == true ? '매칭완료' : '')}"></td>
-                    <td class="tr-td-boardTitle">
-                        <a th:href="@{'/board/' + ${board.boardId}}" th:text="${board.title}"></a>
-                    </td>
-                    <td th:text="${board.username}"></td>
-                    <td th:text="${board.likeCnt}"></td>
-                    <td th:text="${board.commentCount}"></td>
-                    <td th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
-                </tr>
+                    <thead style="border: #000000">
+                    <tr>
+                        <th scope="col">번호</th>
+                        <th scope="col">매칭</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">추천</th>
+                        <th scope="col">댓글수</th>
+                        <th scope="col">등록일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <tr th:if="${not #lists.isEmpty( boardList )}" th:each="board : ${boardList}">
+                        <td class="tr-td-boardId">
+                            <a th:href="@{'/board/' + ${board.boardId}}" th:text="${board.boardId}"></a>
+                        </td>
+                        <td th:text="${board.participate == false ? '매칭중' : (board.participate == true ? '매칭완료' : '')}"></td>
+                        <td class="tr-td-boardTitle">
+                            <a th:href="@{'/board/' + ${board.boardId}}" th:text="${board.title}"></a>
+                        </td>
+                        <td th:text="${board.username}"></td>
+                        <td th:text="${board.likeCnt}"></td>
+                        <td th:text="${board.commentCount}"></td>
+                        <td th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
+                    </tr>
 
-                <tr th:unless="${not #lists.isEmpty( boards )}">
-                    <td colspan="8">
-                        <div class="no_data_msg">검색된 결과가 없습니다.</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    <tr th:unless="${not #lists.isEmpty( boardList )}">
+                        <td colspan="8">
+                            <div class="no_data_msg">검색된 결과가 없습니다.</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <!-- 페이지 숫자 및 클릭 이벤트 추가 -->
             <div class="paging">
+
                 <p>
                     <span class="on">1</span>
                     <span class="page-number">2</span>
@@ -293,6 +297,7 @@
                 <a href="#" class="page_bt next" style="width:100px;" >다음 페이지</a>
                 <a href="#" class="page_bt last" >마지막 페이지</a>
             </div>
+
         </section>
     </div>
 </div>

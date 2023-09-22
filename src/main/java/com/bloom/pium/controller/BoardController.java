@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.bloom.pium.data.dto.ModifyBoardDto;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -137,6 +136,16 @@ public class BoardController {
 
         model.addAttribute("searchResults", searchResults); // 검색 결과를 모델에 추가
         return "searchResults"; // searchResults.html로 이동
+    }
+    // 추가 (2023.09.22.금)
+    @GetMapping("/all")
+    @ApiOperation(value = "전체 게시글 역순")
+    public ModelAndView getAllBoard(Model model) {
+        // 모든 게시글을 가져와서 번호 역순으로 정렬한 후 모델에 추가
+        List<BoardResponseDto> boardList = boardService.getAllBoard();
+        model.addAttribute("boardList", boardList);
+        // boardList.html 뷰로 이동
+        return new ModelAndView("boardList");
     }
 }
 

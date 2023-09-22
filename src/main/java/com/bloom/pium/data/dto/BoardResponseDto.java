@@ -9,19 +9,15 @@ import lombok.*;
 @ToString
 @Builder
 public class BoardResponseDto extends Board {
-
     private Long boardId;
     private String title;
     private String content;
     private int likeCnt;
     private int viewCnt;
-
     private boolean participate;
     private String categoryName;
     private String username;
     private int commentCount;
-
-
 }
 
 //ProductResponseDto: 서버에서 클라이언트

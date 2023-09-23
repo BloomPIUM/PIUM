@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -311,20 +312,32 @@ public class BoardServiceImpl implements BoardService {
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
-//    @Override
-//    public List<BoardMatching> getPostsByUsername(String username) {
-//        return null;
-//    }
 
+    //
+    @Override
+    public List<BoardResponseDto> getBoardsByUserId(Long userId) {
+        // userId로 해당 유저가 작성한 게시글을 가져옵니다.
+        List<BoardMatching> userBoards = boardRepository.findByUserInfoUserId(userId);
 
-//    public List<BoardMatching> getPostsByUsername(Long userId) {
-//            boardRepository.findBy
-//        return null;
-//    }
-
+        // 엔티티를 DTO로 변환하고 리스트를 반환합니다.
+        return userBoards.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
     //작성한 게시글 조회
+    @Override
     public List<BoardMatching> getBoardMatchingListByUserId(Long userId) {
         // userId를 이용하여 해당 사용자의 작성글을 조회
         return boardRepository.findByUserInfoUserId(userId);
+    }
+    @Override
+    public List<BoardResponseDto> getBoardsByUserIdOrderByBoardIdDesc(Long userId) {
+        // userId로 해당 유저가 작성한 게시글을 역순으로 가져옵니다.
+        List<BoardMatching> userBoards = boardRepository.findByUserInfoUserIdOrderByBoardIdDesc(userId);
+
+        // 엔티티를 DTO로 변환하고 리스트를 반환합니다.
+        return userBoards.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 }

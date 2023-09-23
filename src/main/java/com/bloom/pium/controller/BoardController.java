@@ -147,17 +147,22 @@ public class BoardController {
         return new ModelAndView("boardList");
     }
 
-//    @GetMapping("/user/{username}")
-//    public List<BoardMatching> getPostsByUsername(@PathVariable String username) {
-//        return BoardService.getPostsByUsername(username);
+    // userBoards.html로 이동을 하나로 해놔서 오름차순이든 내림차순이든 하나만 해야함 주소도 같게 해놨음
+//    @GetMapping("/user/{userId}")
+//    @ApiOperation(value = "특정 유저가 작성한 게시글 목록")
+//    public String getUserBoards(@PathVariable Long userId, Model model) {
+//        // userId로 특정 유저가 작성한 게시글을 가져옵니다.
+//        List<BoardResponseDto> userBoards = boardService.getBoardsByUserId(userId);
+//        model.addAttribute("myBoards", userBoards);
+//        return "myBoards"; // userBoards.html로 이동
 //    }
-
-    //작성한 게시글 조회 (제목 , 작성자)
-    @GetMapping("/{userId}/boardMatchingList")
-    public String getBoardMatchingList(@PathVariable Long userId, Model model) {
-        List<BoardMatching> boardMatchingList = boardService.getBoardMatchingListByUserId(userId);
-        model.addAttribute("boardMatchingList", boardMatchingList);
-        return "boardmatchinglist"; // board_matching_list.html 템플릿을 사용하여 리스트를 보여줌
+    @GetMapping("/user/{userId}")
+    @ApiOperation(value = "특정 유저가 작성한 게시글 목록 역순")
+    public String getUserBoardsByUserId(@PathVariable Long userId, Model model) {
+        List<BoardResponseDto> userBoards = boardService.getBoardsByUserIdOrderByBoardIdDesc(userId);
+        model.addAttribute("myBoards", userBoards);
+        return "myBoards"; // userBoards.html로 이동
     }
+
 }
 

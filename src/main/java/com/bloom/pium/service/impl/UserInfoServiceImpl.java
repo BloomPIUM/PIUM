@@ -47,11 +47,6 @@ public class UserInfoServiceImpl  implements UserInfoService {
         return userInfoDto;
     }
 
-    //유저정보 조회
-    public UserInfo getUserInfoByUsername(String username) {
-        return userInfoRepository.findByUsername(username);
-    }
-
     @Override
     public UserinfoResponseDto findUsername(String username) {
         UserInfo findUser = userInfoRepository.findByUsername(username);
@@ -61,5 +56,16 @@ public class UserInfoServiceImpl  implements UserInfoService {
         user.setRoles(findUser.getRoles());
         user.setToken(jwtTokenProvider.createToken(user.getUsername(), user.getRoles()));
         return user;
+    }
+    //유저정보 조회
+    @Override
+    public UserInfo getUserInfoByUsername(String username) {
+        return userInfoRepository.findByUsername(username);
+    }
+
+    // 내 정보
+    @Override
+    public UserInfo getUserInfoByUserId(Long userId) {
+        return userInfoRepository.findByUserId(userId);
     }
 }

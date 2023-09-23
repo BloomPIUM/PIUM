@@ -86,5 +86,20 @@ public class UserInfoController {
         UserInfo userInfo = userInfoService.getUserInfoByUsername(username);
         model.addAttribute("userInfo", userInfo);
         return "userinfo"; // 템플릿 파일의 이름 (user_info.html)
+
     }
+    @GetMapping("/userinfo/{userId}")
+    @ApiOperation(value = "마이 페이지")
+    public String getUserInfo(@PathVariable Long userId, Model model) {
+        UserInfo userInfo = userInfoService.getUserInfoByUserId(userId);
+
+        if (userInfo != null) {
+            model.addAttribute("userInfo", userInfo);
+            return "myInfo"; // myInfo.html로 이동
+        } else {
+            // 유저 정보가 없을 경우 예외 처리
+            return "error"; // 에러 페이지로 이동 또는 다른 처리 방법을 선택
+        }
+    }
+
 }

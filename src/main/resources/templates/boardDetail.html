@@ -23,15 +23,6 @@
             margin-right: auto; /* 왼쪽 정렬 요소를 오른쪽으로 밀어냄 */
             background-color: transparent; /* 배경색을 투명으로 설정 */
         }
-<<<<<<< HEAD
-        .sch_group {
-            margin-left: 200px;
-        }
-        .sch_group select, .sch_group input {
-            height: 30px;
-            padding: 5px;
-            margin-right: 10px;
-=======
         .search_box {
             font-size: 16px;
             display: flex;
@@ -39,6 +30,7 @@
             align-items: center;
         }
         .sch_group {
+            margin-left: 200px;
             text-align: left;
             margin-top: 3px;
         }
@@ -48,7 +40,6 @@
             height: 29px; /* 높이 설정 */
             padding-left: 5px; /* 왼쪽 여백 추가 */
             margin-top: -2px; /* 위로 2px 이동 이긴한데 안먹음; */
->>>>>>> origin/MD
         }
         button {
             font-size: 16px;
@@ -75,7 +66,6 @@
             flex-direction: column;
             align-items: center;
             padding: 10px;
-<<<<<<< HEAD
             border: 2px solid #ddd; /* 검은색으로 변경 (2023.09.22.금) */
             /*background-color: #f5f5f5; !* 배경색 변경 (예: 회색) *!*/
             margin: 164px 0px 0px 20px; /* 맨 위 여백 추가 (2023.09.21.목) */
@@ -244,11 +234,10 @@
             cursor: pointer;
             font-size: 16px;
         }
-        & hr { /* hr -> & hr{}로 임의로 수정 확인 필요*/
+        hr {
             border: none; /* 기본 테두리 제거 */
-            border-top: 1px solid #ddd; /* 윗 테두리를 회색으로 설정 */
+            border-top: 1px solid #ccc; /* 윗 테두리를 회색으로 설정 */
             margin: 10px 0; /* 위아래 여백 설정 */
-            }
         }
     </style>
 </head>
@@ -301,7 +290,10 @@
             <div class="post-content">
                 <p class="post-category" th:text="${board.categoryName}">카테고리 이름</p>
                 <h2 class="post-title" th:text="${board.title}">게시글 제목</h2>
-                <p class="post-author" th:text="${board.username}">작성자 이름</p>  <!-- 수정 (2023.09.21.목) -->
+                <p class="post-author">
+                    <a th:href="@{'/api/ratings/byUser/' + ${board.username}}">
+                        <span th:text="${board.username}"></span>  </a>
+                </p>  <!-- 수정 (2023.09.21.목) -->
                 <p class="post-date" th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm' )}">작성 일자 시간</p> <!-- 수정 (2023.09.21.목) -->
                 <div class="post-text" th:text="${board.content}">게시글 내용을 여기에 표시합니다.</div>
                 <br> <!-- 추가 (2023.09.21.목) -->
@@ -317,7 +309,10 @@
                     <li class="comment" th:each="comment : ${comments}">
                         <hr> <!-- 추가 (2023.09.21.목) -->
                         <!-- ↓↓ 수정 (2023.09.21.목) -->
-                        <p class="comment-author" th:text="${comment.username}">댓글 작성자</p>
+                        <p class="comment-author">
+                            <a th:href="@{'/api/ratings/byUser/' + ${comment.username}}">
+                                <span th:text="${comment.username}">유저네임</span>  </a>
+                        </p>
                         <p class="comment-text" th:text="${comment.content}">댓글 내용</p>
                         <p class="comment-date" th:text="${#temporals.format(comment.createdDate, 'yyyy-MM-dd HH:mm' )}">댓글 작성 시간</p>
                         <!-- ↑↑ 수정 (2023.09.21.목) -->
@@ -327,6 +322,7 @@
 
             <!-- 댓글 입력 폼 -->
             <div class="comment-form">
+                <h2 class="comment-form-title">댓글 작성</h2>
                 <textarea class="comment-input" rows="4" placeholder="댓글을 입력하세요" id="commentContent"></textarea>
                 <button class="submit-comment" id="submitComment">댓글 작성</button>
             </div>

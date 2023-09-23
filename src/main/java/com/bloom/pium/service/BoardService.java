@@ -1,12 +1,10 @@
 package com.bloom.pium.service;
 
-
 import com.bloom.pium.data.dto.BoardDto;
 import com.bloom.pium.data.dto.BoardResponseDto;
 import com.bloom.pium.data.entity.BoardMatching;
 import org.springframework.data.domain.Page;
 import java.util.List;
-
 
 public interface BoardService {
     // 게시글 조회

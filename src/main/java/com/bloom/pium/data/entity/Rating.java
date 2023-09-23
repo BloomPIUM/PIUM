@@ -35,6 +35,4 @@ public class Rating {
 
     private String content;
     private int rating;
-
-    // 생성자, 게터, 세터 등 필요한 메서드를 추가하세요.
 }

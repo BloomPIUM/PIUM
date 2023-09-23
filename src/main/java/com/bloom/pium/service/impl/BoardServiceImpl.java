@@ -152,6 +152,7 @@ public class BoardServiceImpl implements BoardService {
             throw new Exception();
         }
     }
+
     // 게시글 전체 불러오기 (수정 2023.09.22.금)
     // 역순으로 수정함
     @Override

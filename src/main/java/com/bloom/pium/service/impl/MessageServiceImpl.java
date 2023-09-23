@@ -1,18 +1,17 @@
 package com.bloom.pium.service.impl;
 
 import com.bloom.pium.data.dto.MessageDto;
+import com.bloom.pium.data.dto.MessageResponseDto;
 import com.bloom.pium.data.entity.Message;
 import com.bloom.pium.data.entity.UserInfo;
 import com.bloom.pium.data.repository.MessageRepository;
 import com.bloom.pium.data.repository.UserInfoRepository;
-import com.bloom.pium.data.dto.MessageResponseDto;
 import com.bloom.pium.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -146,7 +145,6 @@ public class MessageServiceImpl implements MessageService {
         UserInfo receiver = userInfoRepository.findByUsername(username);
         UserInfo recipientUser = userInfoRepository.findById(receiver.getUserId()).get();
         long countUnRead = getUnreadMessageCount(recipientUser.getUserId());
-
         if (receiver != null) {
             List<Message> messages = messageRepository.findByRecipientUsername(username);
             return messages.stream()
@@ -173,6 +171,7 @@ public class MessageServiceImpl implements MessageService {
                 .createdDate(message.getCreatedDate())
                 .build();
     }
+
 
     // 메세지 삭제
     @Override

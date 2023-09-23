@@ -20,32 +20,35 @@
 <div class="container">
   <h2>게시글 작성</h2>
   <form th:action="@{/board/write}" method="post">
-    <label for="title">제목:</label>
-    <input type="text" id="title" name="title" required><br><br>
-
+    <div class="mb-3">
+      <label for="title">제목:</label>
+      <input type="text" id="title" name="title" required><br><br>
+    </div>
     <label for="content">내용:</label>
     <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
-
-    <label for="schedule">일정:</label>
-    <input type="text" id="schedule" name="schedule" required><br><br>
-
+    <div class="mb-3">
+      <label for="schedule">일정:</label>
+      <input type="text" id="schedule" name="schedule" required><br><br>
+    </div>
     <label for="place">장소:</label>
     <input type="text" id="place" name="place" required><br><br>
-
-    <label for="schedule">ID:</label>
-    <input type="text" id="userInfoId" name="userInfoId" required><br><br>
-
-    <label for="categoryId">카테고리:</label>
-    <!--    <input type="text" id="categoryId" name="categoryId" required><br><br>-->
-    <select id="categoryId" name="categoryId" required>
-      <!-- 여기에 카테고리 옵션들을 동적으로 생성할 수 있음 -->
-      <option value="2">매칭게시판</option>
-      <option value="3">리뷰게시판</option>
-      <option value="4">번개구해요</option>
-      <option value="5">광고게시판</option>
-      <option value="6">자유게시판</option>
-      <!-- 추가 카테고리 옵션들... -->
-    </select><br><br>
+    <div class="mb-3">
+      <label for="schedule">ID:</label>
+      <input type="text" id="userInfoId" name="userInfoId" required><br><br>
+    </div>
+    <div class="mb-3">
+      <label for="categoryId">카테고리:</label>
+      <!--    <input type="text" id="categoryId" name="categoryId" required><br><br>-->
+      <select id="categoryId" name="categoryId" required>
+        <!-- 여기에 카테고리 옵션들을 동적으로 생성할 수 있음 -->
+        <option value="2">매칭게시판</option>
+        <option value="3">리뷰게시판</option>
+        <option value="4">번개구해요</option>
+        <option value="5">광고게시판</option>
+        <option value="6">자유게시판</option>
+        <!-- 추가 카테고리 옵션들... -->
+      </select><br><br>
+    </div>
     <input type="submit" value="글 작성">
   </form>
 </div>

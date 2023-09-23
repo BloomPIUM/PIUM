@@ -27,4 +27,5 @@ public interface BoardRepository extends JpaRepository<BoardMatching,Long> {
 
     List<BoardMatching> findByUserInfoUserIdOrderByBoardIdDesc(Long userId);
 
+
 }

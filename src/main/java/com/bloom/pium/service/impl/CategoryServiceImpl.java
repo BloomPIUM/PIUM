@@ -114,4 +114,6 @@ public class CategoryServiceImpl implements CategoryService {
                 .collect(Collectors.toList());
     }
     // ↑↑ 추가 (2023.09.17.일)
+
+    
 }

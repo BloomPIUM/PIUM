@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,6 +45,7 @@ public class RatingServiceImpl implements RatingService {
         // Rating 엔티티 저장
         rating = ratingRepository.save(rating);
 
+
         // 저장된 Rating 엔티티의 정보를 RatingDto로 변환하여 반환
         return convertToRatingDto(rating);
     }
@@ -72,16 +74,43 @@ public class RatingServiceImpl implements RatingService {
 
 
     private RatingDto convertToRatingDto(Rating rating) {
+
         RatingDto ratingDto = new RatingDto();
+
+        // rating.getUser()를 Optional로 감싸서 안전하게 처리
+        Optional<UserInfo> userOptional = Optional.ofNullable(rating.getUser());
+        userOptional.ifPresent(user -> ratingDto.setUsername(user.getUsername()));
+
+        // rating.getRatedUser()도 동일하게 처리
+        Optional<UserInfo> ratedUserOptional = Optional.ofNullable(rating.getRatedUser());
+        ratedUserOptional.ifPresent(ratedUser -> ratingDto.setRatedUsername(ratedUser.getUsername()));
+
+        // 나머지 필드들 설정
         ratingDto.setId(rating.getId());
-        ratingDto.setUsername(rating.getUser().getUsername());
-        ratingDto.setRatedUsername(rating.getRatedUser().getUsername());
         ratingDto.setContent(rating.getContent());
         ratingDto.setRating(rating.getRating());
         ratingDto.setCreatedDate(rating.getCreatedDate());
+
         return ratingDto;
+//        RatingDto ratingDto = new RatingDto();
+//        ratingDto.setId(rating.getId());
+//        ratingDto.setUsername(rating.getUser().getUsername());
+//        ratingDto.setRatedUsername(rating.getRatedUser().getUsername());
+//        ratingDto.setContent(rating.getContent());
+//        ratingDto.setRating(rating.getRating());
+//        ratingDto.setCreatedDate(rating.getCreatedDate());
+//        return ratingDto;
     }
 
+//    public Rating saveRating(Rating rating) {
+//        return ratingRepository.save(rating);
+//    }
 
+//    private Rating convertToRatingEntity(RatingDto ratingDto) {
+//        Rating rating = new Rating();
+//        // 필요한 변환 로직을 여기에 추가
+//
+//        return rating;
+//    }
 
 }

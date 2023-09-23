@@ -3,7 +3,6 @@ package com.bloom.pium.controller;
 import com.bloom.pium.data.dto.MessageDto;
 import com.bloom.pium.data.dto.MessageResponseDto;
 import com.bloom.pium.service.MessageService;
-import com.bloom.pium.service.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

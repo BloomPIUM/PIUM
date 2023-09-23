@@ -12,4 +12,3 @@ public enum UserRoleEnum {
         this.roleName = roleName;
     }
 }
-

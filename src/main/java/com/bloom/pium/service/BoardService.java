@@ -33,5 +33,4 @@ public interface BoardService {
     List<BoardResponseDto> getAllBoard();
     public List<BoardMatching> getBoardMatchingListByUserId(Long userId) ;
         // userId를 이용하여 해당 사용자의 작성글을 조회
-
 }

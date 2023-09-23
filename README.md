@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-# 정재님 코드 POST 안됩니다.
-
-
->>>>>>> origin/mainPage.html+boardList.html+boardDetail.html
-
 # PIUM
 
 웹 프로젝트 개발 중입니다.

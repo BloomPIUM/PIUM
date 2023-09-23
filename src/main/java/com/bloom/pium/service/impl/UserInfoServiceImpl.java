@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import static com.bloom.pium.data.UserRoleEnum.ROLE_USER;
+
 @Service
 public class UserInfoServiceImpl  implements UserInfoService {
 

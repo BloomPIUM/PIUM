@@ -2,9 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-
     <title>PIUM</title>
-
     <style>
         .header-buttons {
             Height: 40px;
@@ -37,7 +35,6 @@
             padding: 10px;
             border: 1px solid #000;
         }
-
         .links-section {
             display: flex;
             display: block;
@@ -51,7 +48,6 @@
             position: fixed; /* 화면에 고정 */
             top: 0; /* 화면 상단에 고정 */
         }
-
         .link {
             padding: 10px 20px;
             margin: 5px;
@@ -72,35 +68,29 @@
         body {
             font-family: Arial, sans-serif;
         }
-
         .page_tits {
             background-color: #f0f0f0;
             padding: 10px;
         }
-
         h3 {
             margin: 0;
             font-size: 20px;
         }
-
         .content {
             padding: 20px;
             flex-grow: 1; /* 오른쪽 공간을 채우기 위한 설정 */
             margin-left: 175px; /* 왼쪽에서 175px 거리를 둡니다. (2023.09.22.금) */
             margin-right: 175px; /* 오른쪽에서 175px 거리를 둡니다. (2023.09.22.금) */
         }
-
         .search_box {
             margin-bottom: 20px;
             margin-left: 5px;
         }
-
         .sch_group select, .sch_group input {
             height: 30px;
             padding: 5px;
             margin-right: 10px;
         }
-
         .bt_search {
             font-family: Arial, sans-serif;
             background-color: #98d583;
@@ -113,29 +103,24 @@
         .skip_info {
             font-size: 16px;
         }
-
         table.tb {
             /*margin-left: 160px;*/ /* 미관상 보기 안좋아서 주석처리함 (2023.09.22.금) */
             width: 100%; /* 수정 (2023.09.22.금) */
             border-collapse: collapse;
         }
-
         table.tb th, td {
             border: 2px solid #ddd; /* 수정 (2023.09.22.금) */
             padding: 10px;
             text-align: center;
         }
-
         .no_data_msg {
             font-style: italic;
             color: #999;
         }
-
         .paging {
             text-align: center;
             margin-top: 20px;
         }
-
         .page_bt {
             display: inline-block;
             padding: 5px 10px;
@@ -144,23 +129,19 @@
             text-decoration: none;
             margin: 0 5px;
         }
-
         .btn_set {
             text-align: right;
             margin-top: 20px;
         }
-
         .btns {
             background-color: #98d583;
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
         }
-
         .btn_mid {
             font-size: 16px;
         }
-
         hr {
             border: none; /* 기본 테두리 제거 */
             border-top: 1px solid #ddd; /* 윗 테두리를 회색으로 설정 */
@@ -184,7 +165,6 @@
 <div id="centeredDiv" class="page_tits">
     <h3>Pium</h3>
 </div>
-
 <div class="container">
     <div class="links-section">
         <a class="link" href="/board/form">게시글쓰기</a> <!-- 추가 (2023.09.22.금) -->
@@ -265,7 +245,6 @@
                     <td th:text="${board.commentCount}"></td>
                     <td th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
                 </tr>
-
                 <tr th:unless="${not #lists.isEmpty( boards )}">
                     <td colspan="8">
                         <div class="no_data_msg">검색된 결과가 없습니다.</div>
@@ -293,6 +272,9 @@
                 <a href="#" class="page_bt next" style="width:100px;" >다음 페이지</a>
                 <a href="#" class="page_bt last" >마지막 페이지</a>
             </div>
+            <p class="btn_set tr">
+                <a href="/board/form" class="btns btn_st3 btn_mid">글작성</a>
+            </p>
         </section>
     </div>
 </div>

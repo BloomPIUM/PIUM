@@ -42,7 +42,6 @@ public class UserInfoController {
             userInfoService.join(userInfoDto);
             return "redirect:/user/login"; // 회원가입 후 로그인 페이지로 리다이렉트
         }
-
     }
 
     @GetMapping("/login")
@@ -51,7 +50,6 @@ public class UserInfoController {
     }
 
     @GetMapping("/mainPage")
-
     public String goToMain(){
         return "mainPage";
     }
@@ -75,10 +73,7 @@ public class UserInfoController {
         // 값이 불일치하는 경우
         model.addAttribute("error", "회원가입을 진행해주세요");
         return "redirect:/SignupPage";
-
-
     }
-
 
 //    @GetMapping("/user/{username}")
 //    public UserInfo getUserInfoByUsername(@PathVariable String username) {

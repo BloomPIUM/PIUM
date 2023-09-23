@@ -11,7 +11,6 @@ import com.bloom.pium.data.repository.UserInfoRepository;
 import com.bloom.pium.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +51,6 @@ public class CommentServiceImpl implements CommentService {
             // ↑↑ 추가, 댓글 카운트 (2023.09.22.금)
             commentRepository.save(comment);
         } else {
-
             // 자식 저장
             Comment commentC = new Comment();
             commentC.setContent(commentDto.getContent());

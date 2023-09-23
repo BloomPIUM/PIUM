@@ -14,5 +14,7 @@ public class MessageResponseDto {
     private String messageContent;
     private String messageTitle;
     private LocalDateTime createdDate;
+    private String senderUsername; //
+    private String receiverUsername; //
 }
 

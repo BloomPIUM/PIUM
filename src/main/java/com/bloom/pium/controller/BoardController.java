@@ -39,7 +39,6 @@ public class BoardController {
         return "BoardForm";
     }
 
-
     @GetMapping()
     public ResponseEntity<BoardResponseDto> getBoard(Long boardId){
         BoardResponseDto boardResponseDto = boardService.getBoard(boardId);

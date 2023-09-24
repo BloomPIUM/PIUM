@@ -33,4 +33,6 @@ public interface BoardService {
         // userId를 이용하여 해당 사용자의 작성글을 조회
     List<BoardResponseDto> getBoardsByUserId(Long userId);
     List<BoardResponseDto> getBoardsByUserIdOrderByBoardIdDesc(Long userId);
+
+    Page<BoardResponseDto> getAllBoardByPage(int page, int size);
 }

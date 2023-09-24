@@ -26,20 +26,14 @@
         .search_box {
             font-size: 16px;
             display: flex;
-            justify-content: flex-end; /* 링크들을 오른쪽으로 정렬 */
+            margin-left: 200px;
+            /*justify-content: flex-end; !* 링크들을 오른쪽으로 정렬 *!*/
             align-items: center;
         }
-        .sch_group {
-            margin-left: 200px;
-            text-align: left;
-            margin-top: 3px;
-        }
-        input[type="text"] {
-            font-size: 16px;
-            border: 1px solid #ccc; /* 회색 테두리 추가 */
-            height: 29px; /* 높이 설정 */
-            padding-left: 5px; /* 왼쪽 여백 추가 */
-            margin-top: -2px; /* 위로 2px 이동 이긴한데 안먹음; */
+        .sch_group select, .sch_group input {
+            height: 30px;
+            padding: 5px;
+            margin-right: 10px;
         }
         button {
             font-size: 16px;
@@ -280,9 +274,8 @@
         <a class="link" href="http://localhost:9090/category/1/list">〈공지사항〉</a>
         <a class="link" href="http://localhost:9090/category/2/list">매칭게시판</a>
         <a class="link" href="http://localhost:9090/category/3/list">리뷰게시판</a>
-        <a class="link" href="http://localhost:9090/category/4/list">번개구해요</a>
-        <a class="link" href="http://localhost:9090/category/5/list">광고게시판</a>
-        <a class="link" href="http://localhost:9090/category/6/list">자유게시판</a>
+        <a class="link" href="http://localhost:9090/category/4/list">운동 번개</a>
+        <a class="link" href="http://localhost:9090/category/5/list">자유게시판</a>
     </div>
     <div class="content">
         <section class="post-section">
@@ -295,6 +288,10 @@
                         <span th:text="${board.username}"></span>  </a>
                 </p>  <!-- 수정 (2023.09.21.목) -->
                 <p class="post-date" th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm' )}">작성 일자 시간</p> <!-- 수정 (2023.09.21.목) -->
+                <th:block th:if="${board.categoryName == '매칭 게시판' || board.categoryName == '운동 번개'}">
+                    <p class="post-text">날짜 : <span th:text="${board.schedule}">날짜</span></p>
+                    <p class="post-text">장소 : <span th:text="${board.place}">장소</span></p>
+                </th:block>
                 <div class="post-text" th:text="${board.content}">게시글 내용을 여기에 표시합니다.</div>
                 <br> <!-- 추가 (2023.09.21.목) -->
                 <br> <!-- 추가 (2023.09.21.목) -->

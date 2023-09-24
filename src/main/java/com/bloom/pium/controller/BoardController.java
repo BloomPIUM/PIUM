@@ -139,10 +139,17 @@ public class BoardController {
     // 추가 (2023.09.22.금)
     @GetMapping("/all")
     @ApiOperation(value = "전체 게시글 역순")
-    public ModelAndView getAllBoard(Model model) {
-        // 모든 게시글을 가져와서 번호 역순으로 정렬한 후 모델에 추가
-        List<BoardResponseDto> boardList = boardService.getAllBoard();
-        model.addAttribute("boardList", boardList);
+    public ModelAndView getAllBoard(
+            @RequestParam(defaultValue = "1") int page,  // 현재 페이지 번호. 기본값은 1
+            @RequestParam(defaultValue = "20") int size,  // 한 페이지당 표시할 항목 수. 기본값은 20
+            Model model) {
+        // 페이지 번호와 한 페이지당 표시할 항목 수를 이용하여 게시글 목록을 가져옵니다.
+        Page<BoardResponseDto> boardPage = boardService.getAllBoardByPage(page, size);
+
+        model.addAttribute("boardList", boardPage.getContent()); // 현재 페이지의 게시글 목록을 모델에 추가
+        model.addAttribute("currentPage", page); // 현재 페이지 번호를 모델에 추가
+        model.addAttribute("totalPages", boardPage.getTotalPages()); // 총 페이지 수를 모델에 추가
+
         // boardList.html 뷰로 이동
         return new ModelAndView("boardList");
     }

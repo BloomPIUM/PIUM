@@ -31,6 +31,7 @@
 
     <label for="place">장소:</label>
     <input type="text" id="place" name="place" required><br><br>
+<<<<<<< HEAD
 
     <label for="schedule">ID:</label>
     <input type="text" id="userInfoId" name="userInfoId" required><br><br>
@@ -46,6 +47,24 @@
       <option value="6">자유게시판</option>
       <!-- 추가 카테고리 옵션들... -->
     </select><br><br>
+=======
+    <div class="mb-3">
+      <label for="schedule">ID:</label>
+      <input type="text" id="userInfoId" name="userInfoId" required><br><br>
+    </div>
+    <div class="mb-3">
+      <label for="categoryId">카테고리:</label>
+      <!--    <input type="text" id="categoryId" name="categoryId" required><br><br>-->
+      <select id="categoryId" name="categoryId" required>
+        <!-- 여기에 카테고리 옵션들을 동적으로 생성할 수 있음 -->
+        <option value="2">매칭게시판</option>
+        <option value="3">리뷰게시판</option>
+        <option value="4">운동 번개</option>
+        <option value="5">자유게시판</option>
+        <!-- 추가 카테고리 옵션들... -->
+      </select><br><br>
+    </div>
+>>>>>>> origin/Paging
     <input type="submit" value="글 작성">
   </form>
 </div>

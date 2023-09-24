@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>메시지 작성</title>
+</head>
+<body>
+<h1>메시지 작성</h1>
+<form th:action="@{/message/send}" method="post" th:object="${messageDto}">
+  <label for="messageTitle">제목:</label>
+  <input type="text" id="messageTitle" name="messageTitle" th:field="*{messageTitle}" required>
+
+  <label for="receiverUserName">받는 사람:</label>
+  <input type="text" id="receiverUserName" name="receiverUserName" th:field="*{receiverUsername}" required>
+
+  <label for="sendUserName">보내는 사람:</label>
+  <input type="text" id="sendUserName" name="sendUserName" th:field="*{senderUsername}" required>
+<!--  <input type="hidden" id="sendId" name="sendId" th:field="*{sendId}" th:value="${userId}" />-->
+
+
+  <div>
+    <label for="content">내용:</label>
+    <textarea id="content" name="content" th:field="*{messageContent}" rows="4" required></textarea>
+  </div>
+  <div>
+    <button type="submit">전송</button>
+  </div>
+</form>
+</body>
+</html>

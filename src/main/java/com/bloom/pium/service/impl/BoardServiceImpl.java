@@ -181,6 +181,8 @@ public class BoardServiceImpl implements BoardService {
             boardResponseDto.setCreatedDate(board.getCreatedDate());
             boardResponseDto.setModifiedDate(board.getModifiedDate());
             boardResponseDto.setCommentCount(board.getCommentCount());
+            boardResponseDto.setPlace(board.getPlace());
+            boardResponseDto.setSchedule(board.getSchedule());
 
             // Fetch the category name from the board's category
             String categoryName = board.getCategory() != null ? board.getCategory().getName() : null;
@@ -339,5 +341,11 @@ public class BoardServiceImpl implements BoardService {
         return userBoards.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    //
+    public Page<BoardResponseDto> getAllBoardByPage(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.DESC, "boardId"));
+        return boardRepository.findAll(pageRequest).map(BoardResponseDto::new);
     }
 }

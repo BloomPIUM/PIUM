@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -69,16 +70,17 @@ public class CategoryController {
 
     // ↓↓ 이거 작동 됨
     @GetMapping("/{id}/list")
-    @ApiOperation(value = "카테고리 ▶ 게시글 리스트")
+    @ApiOperation(value = "카테고리 ▶ 게시글 리스트 역순")
     public ModelAndView getBoardListByCategory(@PathVariable Long id, Model model) {
         List<BoardResponseDto> boards = categoryService.getBoardMatchingByCategory(id);
+
+        // Reverse the order of the 'boards' list
+        Collections.reverse(boards);
+
         ModelAndView modelAndView = new ModelAndView("mainPage"); // Thymeleaf 템플릿의 경로
         modelAndView.addObject("boards", boards);
         System.out.println(boards);
         return modelAndView;
     }
     // ↑↑ 이거 작동 됨
-
-
-
 }
